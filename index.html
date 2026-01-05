@@ -1,0 +1,266 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BlocNav — Reliability in Non-Ideal Conditions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: white;
+            background-color: #0a0a0a;
+            line-height: 1.6;
+            animation: fadein 1s ease;
+        }
+
+        @keyframes fadein {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        header {
+            padding: 1.5rem 2rem;
+            background-color: #000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.6);
+        }
+
+            header a {
+                color: white;
+                text-decoration: none;
+                margin-left: 1.5rem;
+                font-weight: 500;
+            }
+
+        .hero {
+            background: url('https://blocnav.com/wp-content/uploads/2024/11/pexels-vividcafe-681335-scaled.jpg') center/cover;
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+            .hero img {
+                width: 300px;
+                margin-bottom: 1rem;
+                border-radius: 20px;
+                box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+                margin-bottom: 1rem;
+                color: #ffffff;
+                text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+            }
+
+            .hero p {
+                max-width: 800px;
+                margin: 0 auto;
+                font-size: 1.1rem;
+                color: #e6e6e6;
+            }
+
+        .section {
+            max-width: 1100px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .column {
+            flex: 1 1 400px;
+            background-color: #111;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        .section h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #00e0ff;
+        }
+
+        .section p {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta {
+            background: url('https://blocnav.com/wp-content/uploads/2024/11/crop-0-0-2400-1200-0-nightmap.jpg') center/cover;
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+
+            .cta h2 {
+                font-size: 2.2rem;
+                margin-bottom: 1rem;
+                color: #ffffff;
+                text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+            }
+
+            .cta p {
+                font-size: 1.05rem;
+                max-width: 800px;
+                margin: 0 auto;
+                color: #e0f7fa;
+            }
+
+        footer {
+            background-color: #111;
+            padding: 2rem;
+            text-align: center;
+            font-size: 0.9rem;
+            border-top: 1px solid #222;
+        }
+
+        @media (max-width: 768px) {
+            .section {
+                flex-direction: column;
+            }
+
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+
+            .column {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div><strong>BlocNav</strong></div>
+        <nav>
+            <a href="#">Home</a>
+            <a href="https://github.com/L3Pro/blocnav-reliability" target="_blank">Reliability</a>
+            <a href="/contact-page">Contact</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <img src="https://blocnav.com/wp-content/uploads/2025/07/blocnav-banner-1024x450.jpg" alt="BlocNav Logo" />
+        <h1>Most mapping systems fail before they say they’ve failed.</h1>
+        <p>
+            Especially on slow, unstable networks that look connected — but aren’t.
+        </p>
+    </section>
+
+    <section class="section">
+        <div class="column">
+            <h2>The Problem Isn’t Offline. It’s Deceptive Connectivity.</h2>
+            <p>
+                In real field conditions, connectivity is rarely binary.
+                You’re not fully online. You’re not fully offline.
+            </p>
+            <p>
+                You’re on a weak, unreliable network that signals “connected” while
+                quietly blocking access to local data.
+            </p>
+            <p>
+                Maps stall. Tiles don’t render. Spinners never resolve.
+                The system doesn’t fail loudly — it hesitates.
+            </p>
+            <p>
+                For field teams, that hesitation erodes trust and delays decisions.
+            </p>
+        </div>
+
+        <div class="column">
+            <h2>Slow Networks Are Worse Than Offline</h2>
+            <p>
+                When a system knows it is offline, it can fall back to local data.
+            </p>
+            <p>
+                When a system believes it is online — but isn’t — it often blocks that
+                same data waiting on the network.
+            </p>
+            <p>
+                This creates a dangerous paradox:
+                local data exists, but becomes unreachable at the moment it is needed most.
+            </p>
+            <p>
+                This failure mode is common, under-documented, and operationally risky.
+            </p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="column">
+            <h2>Why BlocNav Exists</h2>
+            <p>
+                BlocNav exists because this class of failure is unacceptable.
+            </p>
+            <p>
+                It is built around non-negotiable constraints learned from real field use:
+            </p>
+            <p>
+                Offline is canonical. Local persistence comes first.
+                Systems must degrade clearly, not ambiguously.
+                Silence is better than lying.
+            </p>
+            <p>
+                These are not feature goals.
+                They are enforced design decisions.
+            </p>
+        </div>
+
+        <div class="column">
+            <h2>Reliability & Technical Notes</h2>
+            <p>
+                BlocNav’s public engineering artifacts live outside this site.
+            </p>
+            <p>
+                They document real failure modes, design principles,
+                and operational lessons — without exposing implementation or roadmap.
+            </p>
+            <p>
+                <a href="https://github.com/L3Pro/blocnav-reliability" target="_blank">blocnav-reliability (GitHub)</a><br />
+                <a href="https://github.com/L3Pro/blocnav-reliability/blob/main/FAILURE_MODES.md" target="_blank">FAILURE_MODES.md</a><br />
+                <a href="https://github.com/L3Pro/blocnav-reliability/blob/main/DESIGN_PRINCIPLES.md" target="_blank">DESIGN_PRINCIPLES.md</a>
+            </p>
+        </div>
+    </section>
+
+    <section class="cta">
+        <h2>Pilot Evaluation</h2>
+        <p>
+            BlocNav is currently in limited pilot evaluation with teams operating
+            in constrained, non-ideal environments.
+            <br /><br />
+            If you are evaluating systems under real field conditions,
+            you may reach out.
+        </p>
+    </section>
+
+    <footer>
+        &copy; 2025 BlocNav. All rights reserved. |
+        <a href="/privacy-policy">Privacy</a> |
+        <a href="/terms">Terms</a>
+    </footer>
+
+</body>
+</html>
