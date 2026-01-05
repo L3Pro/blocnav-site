@@ -14,24 +14,12 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            color: white;
+            color: #eaeaea;
             background-color: #0a0a0a;
-            line-height: 1.6;
-            animation: fadein 1s ease;
+            line-height: 1.7;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-        }
-
-
-        @keyframes fadein {
-            from {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
-            }
         }
 
         header {
@@ -43,7 +31,7 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.6);
+            border-bottom: 1px solid #222;
         }
 
             header a {
@@ -53,80 +41,30 @@
                 font-weight: 500;
             }
 
-        .hero {
-            background: url('https://blocnav.com/wp-content/uploads/2024/11/pexels-vividcafe-681335-scaled.jpg') center/cover;
-            padding: 6rem 2rem;
-            text-align: center;
-        }
-
-            .hero img {
-                width: 300px;
-                margin-bottom: 1rem;
-                border-radius: 20px;
-                box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-                margin-bottom: 1rem;
-                color: #ffffff;
-                text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
-            }
-
-            .hero p {
-                max-width: 800px;
-                margin: 0 auto;
-                font-size: 1.1rem;
-                color: #e6e6e6;
-            }
-
-        .section {
-            max-width: 1100px;
+        .container {
+            max-width: 760px;
             margin: 4rem auto;
             padding: 0 2rem;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
+            width: 100%;
         }
 
-        .column {
-            flex: 1 1 400px;
-            background-color: #111;
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        h1 {
+            font-size: 2.4rem;
+            margin-bottom: 1.5rem;
+            color: #ffffff;
         }
 
-        .section h2 {
-            font-size: 1.5rem;
+        h2 {
+            font-size: 1.4rem;
+            margin-top: 3rem;
             margin-bottom: 1rem;
             color: #00e0ff;
         }
 
-        .section p {
-            font-size: 1rem;
-            margin-bottom: 1rem;
+        p {
+            margin-bottom: 1.2rem;
+            font-size: 1.05rem;
         }
-
-        .cta {
-            background: url('https://blocnav.com/wp-content/uploads/2024/11/crop-0-0-2400-1200-0-nightmap.jpg') center/cover;
-            text-align: center;
-            padding: 4rem 2rem;
-        }
-
-            .cta h2 {
-                font-size: 2.2rem;
-                margin-bottom: 1rem;
-                color: #ffffff;
-                text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
-            }
-
-            .cta p {
-                font-size: 1.05rem;
-                max-width: 800px;
-                margin: 0 auto;
-                color: #e0f7fa;
-            }
 
         footer {
             background-color: #111;
@@ -137,27 +75,30 @@
             margin-top: auto;
         }
 
+        a {
+            color: #7fdfff;
+        }
 
         @media (max-width: 768px) {
-            .section {
-                flex-direction: column;
-            }
-
-            .hero h1 {
-                font-size: 1.6rem;
-            }
-
-            .column {
-                padding: 1.5rem;
+            h1 {
+                font-size: 1.8rem;
             }
         }
+
     </style>
 </head>
 
 <body>
 
     <header>
-        <strong>BlocNav</strong>
+        <div><strong>BlocNav</strong></div>
+        <nav>
+            <a href="./index.html">Home</a>
+            <a href="./slow-networks.html">The Slow Network Problem</a>
+            <a href="https://github.com/L3Pro/blocnav-reliability" target="_blank">Reliability First</a>
+            <a href="./contact.html">Contact</a>
+        </nav>
+
     </header>
 
     <div class="container">
