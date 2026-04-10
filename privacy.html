@@ -1,143 +1,303 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BlocNav — Privacy</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy — BlocNav</title>
+<meta name="description" content="BlocNav privacy policy. No trackers, no ads, no behavioral profiling. Local data ownership by design.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-primary: #080c12;
+  --bg-secondary: #0e1319;
+  --bg-card: #131a23;
+  --text-primary: #e4e9ef;
+  --text-secondary: #8694a4;
+  --text-muted: #4e5d6e;
+  --brand: #3572f7;
+  --brand-action: #2563eb;
+  --brand-hover: #174bb7;
+  --brand-dim: rgba(53, 114, 247, 0.12);
+  --border: rgba(255,255,255,0.06);
+  --border-light: rgba(255,255,255,0.09);
+  --radius: 10px;
+  --font-body: 'Source Sans 3', -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', monospace;
+}
 
-        body {
-            font-family: 'Inter', sans-serif;
-            color: #eaeaea;
-            background-color: #0a0a0a;
-            line-height: 1.7;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 
-        header {
-            padding: 1.5rem 2rem;
-            background-color: #000;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid #222;
-        }
+body {
+  font-family: var(--font-body);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
 
-            header a {
-                color: white;
-                text-decoration: none;
-                margin-left: 1.5rem;
-                font-weight: 500;
-            }
+.grid-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.025;
+  background-image:
+    linear-gradient(rgba(53,114,247,0.4) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(53,114,247,0.4) 1px, transparent 1px);
+  background-size: 80px 80px;
+}
 
-        .container {
-            max-width: 760px;
-            margin: 4rem auto;
-            padding: 0 2rem;
-            width: 100%;
-        }
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: rgba(8, 12, 18, 0.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 24px;
+}
 
-        h1 {
-            font-size: 2.4rem;
-            margin-bottom: 1.5rem;
-            color: #ffffff;
-        }
+.nav-inner {
+  max-width: 1060px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 58px;
+}
 
-        h2 {
-            font-size: 1.4rem;
-            margin-top: 3rem;
-            margin-bottom: 1rem;
-            color: #00e0ff;
-        }
+.nav-logo {
+  font-family: var(--font-mono);
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--text-primary);
+  text-decoration: none;
+  letter-spacing: -0.5px;
+}
 
-        p {
-            margin-bottom: 1.2rem;
-            font-size: 1.05rem;
-        }
+.nav-logo span { color: var(--brand); }
 
-        footer {
-            background-color: #111;
-            padding: 2rem;
-            text-align: center;
-            font-size: 0.9rem;
-            border-top: 1px solid #222;
-            margin-top: auto;
-        }
+.nav-links {
+  display: flex;
+  gap: 26px;
+  list-style: none;
+  align-items: center;
+}
 
-        a {
-            color: #7fdfff;
-        }
+.nav-links a {
+  font-size: 14px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.2s;
+}
 
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 1.8rem;
-            }
-        }
-    </style>
+.nav-links a:hover { color: var(--text-primary); }
+
+.nav-cta {
+  background: var(--brand-action) !important;
+  color: #fff !important;
+  padding: 7px 18px;
+  border-radius: 6px;
+  font-weight: 600 !important;
+  font-size: 13px !important;
+  transition: background 0.2s !important;
+}
+
+.nav-cta:hover { background: var(--brand-hover) !important; }
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.article {
+  position: relative;
+  z-index: 1;
+  max-width: 660px;
+  margin: 0 auto;
+  padding: 140px 24px 100px;
+}
+
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--brand);
+  margin-bottom: 14px;
+  display: block;
+}
+
+.article h1 {
+  font-size: clamp(28px, 4vw, 36px);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.5px;
+  margin-bottom: 32px;
+}
+
+.article h2 {
+  font-size: 19px;
+  font-weight: 700;
+  margin-top: 40px;
+  margin-bottom: 12px;
+}
+
+.article p {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.75;
+  margin-bottom: 16px;
+}
+
+.article strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.article ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px;
+}
+
+.article ul li {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.75;
+  padding: 6px 0 6px 20px;
+  position: relative;
+}
+
+.article ul li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--text-muted);
+}
+
+.last-updated {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--brand);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  margin-top: 32px;
+  transition: opacity 0.2s;
+}
+
+.back-link:hover { opacity: 0.8; }
+
+footer {
+  padding: 36px 24px;
+  border-top: 1px solid var(--border);
+  text-align: center;
+  font-size: 13px;
+  color: var(--text-muted);
+  position: relative;
+  z-index: 1;
+}
+
+footer a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  margin: 0 10px;
+  transition: color 0.2s;
+}
+
+footer a:hover { color: var(--text-primary); }
+
+@media (max-width: 600px) {
+  .nav-links { display: none; }
+  .nav-toggle { display: block; }
+  .nav-links.open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 58px;
+    left: 0; right: 0;
+    background: rgba(8,12,18,0.97);
+    backdrop-filter: blur(20px);
+    padding: 18px 24px;
+    gap: 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  .article { padding-top: 110px; }
+}
+</style>
 </head>
-
 <body>
 
-    <header>
-        <div><strong>BlocNav</strong></div>
-        <nav>
-            <a href="./index.html">Home</a>
-            <a href="./slow-networks.html">The Slow Network Problem</a>
-            <a href="https://github.com/L3Pro/blocnav-reliability" target="_blank">Reliability First</a>
-            <a href="./contact.html">Contact</a>
-        </nav>
+<div class="grid-bg"></div>
 
-    </header>
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Bloc<span>Nav</span></a>
+    <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">☰</button>
+    <ul class="nav-links">
+      <li><a href="index.html#features">Features</a></li>
+      <li><a href="index.html#how">How It Works</a></li>
+      <li><a href="index.html#why">Why BlocNav</a></li>
+      <li><a href="index.html#contact" class="nav-cta">Get in Touch</a></li>
+    </ul>
+  </div>
+</nav>
 
-    <div class="container">
-        <h1>Privacy</h1>
+<article class="article">
+  <span class="section-label">Legal</span>
+  <h1>Privacy</h1>
 
-        <p>
-            BlocNav is designed for use in environments where trust, safety,
-            and data integrity matter.
-        </p>
+  <h2>This Website</h2>
+  <p>This public website does not collect personal data beyond standard web server logs. We do not run analytics trackers, advertising pixels, or behavioral profiling of any kind.</p>
 
-        <p>
-            This public website does not collect personal data beyond
-            standard web server logs.
-            We do not run analytics trackers, advertising pixels,
-            or behavioral profiling.
-        </p>
+  <h2>The BlocNav Application</h2>
+  <p>BlocNav's application platform is currently in private pilot evaluation. Within the application:</p>
+  <ul>
+    <li>An email address is collected at login for user identification and data attribution</li>
+    <li>POI data, coverage polygons, and GPS track logs created by users are stored locally on-device and synced to a PostGIS database when connectivity is available</li>
+    <li>GPS track logs record movement paths (coordinates, distance, duration) only while actively recording — tracking does not run in the background</li>
+    <li>Location data is used for map positioning and track logging, and is not transmitted beyond the user's device unless explicitly attached to a POI or track</li>
+    <li>No data is sold, shared with third parties, or used for advertising</li>
+  </ul>
 
-        <p>
-            BlocNav’s application platform is currently in private pilot
-            evaluation. Data handling practices within the application
-            depend on deployment context and are governed by pilot agreements.
-        </p>
+  <h2>Design Principles</h2>
+  <p>BlocNav is built around <strong>local data ownership</strong> and <strong>minimal collection</strong>. Data created in the field belongs to the team that created it. We collect only what is necessary for the application to function — nothing more.</p>
 
-        <p>
-            As a design principle:
-            local data ownership, minimal collection,
-            and explicit operational control are prioritized.
-        </p>
+  <h2>Data Handling</h2>
+  <p>Specific data handling practices within the application depend on deployment context and are governed by pilot agreements with participating organizations. If you have questions about how your data is handled, contact us at <strong>contact@blocnav.com</strong>.</p>
 
-        <p>
-            This policy may evolve as BlocNav matures.
-            Updates will be reflected here.
-        </p>
-    </div>
+  <p class="last-updated">Last updated: March 2026. This policy may evolve as BlocNav matures.</p>
+  <a href="index.html" class="back-link">← Back to BlocNav</a>
+</article>
 
-    <footer>
-        &copy; 2025 BlocNav. All rights reserved. |
-        <a href="./privacy.html">Privacy</a> |
-        <a href="./terms.html">Terms</a>
-    </footer>
+<footer>
+  <div>
+    <p style="margin-bottom:10px;">© 2026 BlocNav. All rights reserved.</p>
+    <a href="https://github.com/L3Pro/blocnav-reliability">Engineering Docs</a>
+    <a href="slow-networks.html">The Slow Network Problem</a>
+    <a href="privacy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+  </div>
+</footer>
 
 </body>
 </html>

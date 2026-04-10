@@ -1,286 +1,389 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Why Slow Networks Are Worse Than Offline — BlocNav</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why Slow Networks Are Worse Than Offline — BlocNav</title>
+<meta name="description" content="Most software treats connectivity as binary. In the field, it's not. BlocNav is designed for the dangerous middle ground — deceptive connectivity.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-primary: #080c12;
+  --bg-secondary: #0e1319;
+  --bg-card: #131a23;
+  --text-primary: #e4e9ef;
+  --text-secondary: #8694a4;
+  --text-muted: #4e5d6e;
+  --brand: #3572f7;
+  --brand-action: #2563eb;
+  --brand-hover: #174bb7;
+  --brand-dim: rgba(53, 114, 247, 0.12);
+  --green: #22c55e;
+  --green-dim: rgba(34, 197, 94, 0.12);
+  --red: #ef4444;
+  --red-dim: rgba(239, 68, 68, 0.1);
+  --amber: #f59e0b;
+  --border: rgba(255,255,255,0.06);
+  --border-light: rgba(255,255,255,0.09);
+  --radius: 10px;
+  --font-body: 'Source Sans 3', -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', monospace;
+}
 
-        body {
-            font-family: 'Inter', sans-serif;
-            color: #eaeaea;
-            background-color: #0a0a0a;
-            line-height: 1.7;
-        }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 
-        header {
-            padding: 1.5rem 2rem;
-            background-color: #000;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid #222;
-        }
+body {
+  font-family: var(--font-body);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
 
-            header a {
-                color: white;
-                text-decoration: none;
-                margin-left: 1.5rem;
-                font-weight: 500;
-            }
+.grid-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.025;
+  background-image:
+    linear-gradient(rgba(53,114,247,0.4) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(53,114,247,0.4) 1px, transparent 1px);
+  background-size: 80px 80px;
+}
 
-        .container {
-            max-width: 760px;
-            margin: 4rem auto;
-            padding: 0 2rem;
-        }
+/* NAV */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: rgba(8, 12, 18, 0.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 24px;
+}
 
-        h1 {
-            font-size: 2.4rem;
-            margin-bottom: 1.5rem;
-            color: #ffffff;
-        }
+.nav-inner {
+  max-width: 1060px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 58px;
+}
 
-        h2 {
-            font-size: 1.4rem;
-            margin-top: 3rem;
-            margin-bottom: 1rem;
-            color: #00e0ff;
-        }
+.nav-logo {
+  font-family: var(--font-mono);
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--text-primary);
+  text-decoration: none;
+  letter-spacing: -0.5px;
+}
 
-        p {
-            margin-bottom: 1.2rem;
-            font-size: 1.05rem;
-        }
+.nav-logo span { color: var(--brand); }
 
-        .note {
-            background-color: #111;
-            border-left: 4px solid #00e0ff;
-            padding: 1.2rem 1.5rem;
-            margin: 2.5rem 0;
-            color: #dcdcdc;
-        }
+.nav-links {
+  display: flex;
+  gap: 26px;
+  list-style: none;
+  align-items: center;
+}
 
-        footer {
-            background-color: #111;
-            padding: 2rem;
-            text-align: center;
-            font-size: 0.9rem;
-            border-top: 1px solid #222;
-            margin-top: 4rem;
-        }
+.nav-links a {
+  font-size: 14px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.2s;
+}
 
-        a {
-            color: #7fdfff;
-        }
+.nav-links a:hover { color: var(--text-primary); }
 
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 1.8rem;
-            }
-        }
-    </style>
+.nav-cta {
+  background: var(--brand-action) !important;
+  color: #fff !important;
+  padding: 7px 18px;
+  border-radius: 6px;
+  font-weight: 600 !important;
+  font-size: 13px !important;
+  transition: background 0.2s !important;
+}
+
+.nav-cta:hover { background: var(--brand-hover) !important; }
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 22px;
+  cursor: pointer;
+}
+
+/* ARTICLE LAYOUT */
+.article {
+  position: relative;
+  z-index: 1;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 140px 24px 100px;
+}
+
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--brand);
+  margin-bottom: 14px;
+  display: block;
+}
+
+.article h1 {
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.5px;
+  margin-bottom: 12px;
+}
+
+.article .subtitle {
+  font-size: 18px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 48px;
+  max-width: 560px;
+}
+
+.article h2 {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.25;
+  margin-top: 52px;
+  margin-bottom: 16px;
+  letter-spacing: -0.3px;
+}
+
+.article p {
+  font-size: 16px;
+  color: var(--text-secondary);
+  line-height: 1.78;
+  margin-bottom: 18px;
+}
+
+.article strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+/* Callout box */
+.callout {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-left: 3px solid var(--brand);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: 24px 28px;
+  margin: 32px 0;
+}
+
+.callout p {
+  margin-bottom: 0;
+  font-size: 15px;
+}
+
+/* Connectivity diagram */
+.conn-diagram {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius);
+  padding: 32px;
+  margin: 36px 0;
+}
+
+.conn-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 0;
+}
+
+.conn-row + .conn-row {
+  border-top: 1px solid var(--border);
+}
+
+.conn-state {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  padding: 5px 12px;
+  border-radius: 6px;
+  min-width: 100px;
+  text-align: center;
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+.s-offline { background: var(--green-dim); color: var(--green); }
+.s-deceptive { background: var(--red-dim); color: var(--red); }
+.s-online { background: var(--brand-dim); color: var(--brand); }
+
+.conn-desc {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.conn-desc strong { color: var(--text-primary); }
+
+.conn-arrow {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-muted);
+  padding: 6px 0;
+  text-align: center;
+}
+
+/* Back link */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--brand);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  margin-top: 40px;
+  transition: opacity 0.2s;
+}
+
+.back-link:hover { opacity: 0.8; }
+
+/* FOOTER */
+footer {
+  padding: 36px 24px;
+  border-top: 1px solid var(--border);
+  text-align: center;
+  font-size: 13px;
+  color: var(--text-muted);
+  position: relative;
+  z-index: 1;
+}
+
+footer a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  margin: 0 10px;
+  transition: color 0.2s;
+}
+
+footer a:hover { color: var(--text-primary); }
+
+@media (max-width: 600px) {
+  .nav-links { display: none; }
+  .nav-toggle { display: block; }
+  .nav-links.open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 58px;
+    left: 0; right: 0;
+    background: rgba(8,12,18,0.97);
+    backdrop-filter: blur(20px);
+    padding: 18px 24px;
+    gap: 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  .article { padding-top: 110px; }
+  .conn-row { flex-direction: column; align-items: flex-start; gap: 8px; }
+}
+</style>
 </head>
-
 <body>
 
-    <header>
-        <div><strong>BlocNav</strong></div>
-        <nav>
-            <a href="./index.html">Home</a>
-            <a href="./slow-networks.html">The Slow Network Problem</a>
-            <a href="https://github.com/L3Pro/blocnav-reliability" target="_blank">Reliability First</a>
-            <a href="./contact.html">Contact</a>
-        </nav>
+<div class="grid-bg"></div>
 
-    </header>
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Bloc<span>Nav</span></a>
+    <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">☰</button>
+    <ul class="nav-links">
+      <li><a href="index.html#features">Features</a></li>
+      <li><a href="index.html#how">How It Works</a></li>
+      <li><a href="index.html#why">Why BlocNav</a></li>
+      <li><a href="index.html#contact" class="nav-cta">Get in Touch</a></li>
+    </ul>
+  </div>
+</nav>
 
-    <main class="container">
+<article class="article">
+  <span class="section-label">Technical Insight</span>
+  <h1>Why Slow Networks Are Worse Than Offline</h1>
+  <p class="subtitle">Most software treats connectivity as binary — online or offline. In real field conditions, that assumption will cost you data.</p>
 
-        <h1>Why Slow Networks Are Worse Than Offline</h1>
+  <h2>The Field Reality</h2>
+  <p>Consider a common scenario: a mobile device in motion, moving through areas of intermittent cellular coverage. The operating system reports a network connection. Applications assume remote services are reachable. Requests are attempted.</p>
+  <p>But responses arrive slowly, inconsistently, or not at all.</p>
+  <p>From the user's perspective, the system appears alive but unresponsive. <strong>Maps do not render. Data that exists locally does not appear. Interfaces stall without explanation.</strong></p>
 
-        <p>
-            Most software systems treat connectivity as a binary state.
-            You are either online, or you are offline.
-        </p>
+  <h2>The Deceptive Connectivity Problem</h2>
+  <p>When a system knows it is offline, it can make a clear decision: rely entirely on local state. This works.</p>
+  <p>When a system <em>believes</em> it is online — but the network is too slow or too lossy to support real interaction — it often prioritizes remote calls, even when those calls are failing silently. Local data may exist. Offline caches may be populated. <strong>But access to that data is blocked while the system waits on the network.</strong></p>
+  <p>The result is a paradox: the data is present, but unreachable.</p>
 
-        <p>
-            In real-world field conditions, this assumption rarely holds.
-        </p>
+  <div class="conn-diagram">
+    <div class="conn-row">
+      <div class="conn-state s-offline">OFFLINE</div>
+      <div class="conn-desc">System knows it's disconnected. Falls back to local data. <strong>Works fine.</strong></div>
+    </div>
+    <div class="conn-arrow">↓ signal appears but is unreliable ↓</div>
+    <div class="conn-row">
+      <div class="conn-state s-deceptive">DECEPTIVE</div>
+      <div class="conn-desc">Phone shows bars. App tries remote calls. Tiles stall. Local data blocked. <strong>Most apps fail here.</strong></div>
+    </div>
+    <div class="conn-arrow">↓ stable connection ↓</div>
+    <div class="conn-row">
+      <div class="conn-state s-online">ONLINE</div>
+      <div class="conn-desc">Full connectivity. Sync fires. Data merges. <strong>Normal operations.</strong></div>
+    </div>
+  </div>
 
-        <p>
-            Connectivity is often partial, unstable, or misleading.
-            A device reports that it is “connected,” yet the network is too slow,
-            too lossy, or too unreliable to support real interaction.
-        </p>
+  <h2>Failure Without Signals</h2>
+  <p>The most damaging aspect of deceptive connectivity is not performance — it is ambiguity. The system does not fail loudly. It does not declare itself offline. It does not provide a clear fallback.</p>
+  <p>Instead, it hesitates.</p>
+  <p>For users operating in constrained environments, this hesitation erodes trust. They cannot tell whether the system is broken, the data is missing, or the situation is simply unresolved.</p>
 
-        <p>
-            This state — <em>deceptive connectivity</em> — is where many systems fail.
-        </p>
+  <h2>Operational Impact</h2>
+  <p>In consumer applications, this failure mode is frustrating. In operational contexts — disaster response, field logistics, infrastructure assessment — it can be dangerous.</p>
+  <p>Decisions are delayed. Workarounds emerge. <strong>Systems are abandoned at the moment they are most needed.</strong></p>
 
-        <h2>The Field Reality</h2>
+  <div class="callout">
+    <p>The core issue is not lack of connectivity. It is lack of <strong>honest system behavior</strong> under degraded conditions.</p>
+  </div>
 
-        <p>
-            Consider a common scenario: a mobile device in motion,
-            moving through areas of intermittent cellular coverage.
-        </p>
+  <h2>How BlocNav Handles This</h2>
+  <p>BlocNav treats offline as a first-class state, not an exception. Local persistence always precedes synchronization. Access to local data is never blocked by network uncertainty.</p>
+  <p>When degradation occurs, it is explicit — the system tells you what's happening rather than spinning silently. Silence is preferable to misleading signals.</p>
+  <p>These constraints are difficult. They limit architectural choices and complicate implementation. They are also unavoidable if a system is expected to function in non-ideal conditions.</p>
 
-        <p>
-            The operating system reports a network connection.
-            Applications assume remote services are reachable.
-            Requests are attempted.
-        </p>
+  <div class="callout">
+    <p>Deceptive connectivity is not an edge case. It is the <strong>dominant condition</strong> in many real field environments. BlocNav exists because this class of failure is both common and preventable — but only if it is acknowledged explicitly.</p>
+  </div>
 
-        <p>
-            But responses arrive slowly, inconsistently, or not at all.
-        </p>
+  <a href="index.html" class="back-link">← Back to BlocNav</a>
+</article>
 
-        <p>
-            From the user’s perspective, the system appears alive but unresponsive.
-            Maps do not render.
-            Data that exists locally does not appear.
-            Interfaces stall without explanation.
-        </p>
-
-        <h2>Why This Is Worse Than Offline</h2>
-
-        <p>
-            When a system knows it is offline, it can make a clear decision:
-            rely entirely on local state.
-        </p>
-
-        <p>
-            When a system believes it is online, it often prioritizes remote calls,
-            even when those calls are failing silently.
-        </p>
-
-        <p>
-            Local data may exist.
-            Offline caches may be populated.
-            But access to that data is blocked while the system waits on the network.
-        </p>
-
-        <p>
-            The result is a paradox:
-            the data is present, but unreachable.
-        </p>
-
-        <h2>Failure Without Signals</h2>
-
-        <p>
-            The most damaging aspect of deceptive connectivity is not performance.
-            It is ambiguity.
-        </p>
-
-        <p>
-            The system does not fail loudly.
-            It does not declare itself offline.
-            It does not provide a clear fallback.
-        </p>
-
-        <p>
-            Instead, it hesitates.
-        </p>
-
-        <p>
-            For users operating in constrained environments,
-            this hesitation erodes trust.
-            They cannot tell whether the system is broken,
-            the data is missing,
-            or the situation is simply unresolved.
-        </p>
-
-        <h2>Operational Impact</h2>
-
-        <p>
-            In consumer applications, this failure mode is frustrating.
-        </p>
-
-        <p>
-            In operational contexts — disaster response, field logistics,
-            infrastructure assessment — it can be dangerous.
-        </p>
-
-        <p>
-            Decisions are delayed.
-            Workarounds emerge.
-            Systems are abandoned at the moment they are most needed.
-        </p>
-
-        <div class="note">
-            The core issue is not lack of connectivity.
-            It is lack of honest system behavior under degraded conditions.
-        </div>
-
-        <h2>Design Implications</h2>
-
-        <p>
-            This failure mode implies a set of constraints,
-            not feature requests.
-        </p>
-
-        <p>
-            Systems must treat offline as a first-class state,
-            not an exception.
-        </p>
-
-        <p>
-            Local persistence must precede synchronization.
-            Access to local data must not be blocked by network uncertainty.
-        </p>
-
-        <p>
-            When degradation occurs, it should be explicit.
-            Silence is preferable to misleading signals.
-        </p>
-
-        <p>
-            These constraints are difficult.
-            They limit architectural choices.
-            They complicate implementation.
-        </p>
-
-        <p>
-            They are also unavoidable if a system is expected
-            to function in non-ideal conditions.
-        </p>
-
-        <h2>Why This Matters</h2>
-
-        <p>
-            Deceptive connectivity is not an edge case.
-            It is the dominant condition in many real environments.
-        </p>
-
-        <p>
-            Systems that ignore it may appear functional in testing,
-            yet fail quietly in the field.
-        </p>
-
-        <p>
-            BlocNav exists because this class of failure
-            is both common and preventable —
-            but only if it is acknowledged explicitly.
-        </p>
-
-    </main>
-
-    <footer>
-        &copy; 2025 BlocNav. All rights reserved. |
-        <a href="./privacy.html">Privacy</a> |
-        <a href="./terms.html">Terms</a>
-    </footer>
+<footer>
+  <div>
+    <p style="margin-bottom:10px;">© 2026 BlocNav. All rights reserved.</p>
+    <a href="https://github.com/L3Pro/blocnav-reliability">Engineering Docs</a>
+    <a href="slow-networks.html">The Slow Network Problem</a>
+    <a href="privacy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+  </div>
+</footer>
 
 </body>
 </html>
