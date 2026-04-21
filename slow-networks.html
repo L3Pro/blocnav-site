@@ -6,308 +6,179 @@
 <title>Why Slow Networks Are Worse Than Offline — BlocNav</title>
 <meta name="description" content="Most software treats connectivity as binary. In the field, it's not. BlocNav is designed for the dangerous middle ground — deceptive connectivity.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg-primary: #080c12;
-  --bg-secondary: #0e1319;
-  --bg-card: #131a23;
-  --text-primary: #e4e9ef;
-  --text-secondary: #8694a4;
-  --text-muted: #4e5d6e;
-  --brand: #3572f7;
-  --brand-action: #2563eb;
-  --brand-hover: #174bb7;
-  --brand-dim: rgba(53, 114, 247, 0.12);
-  --green: #22c55e;
-  --green-dim: rgba(34, 197, 94, 0.12);
-  --red: #ef4444;
-  --red-dim: rgba(239, 68, 68, 0.1);
-  --amber: #f59e0b;
-  --border: rgba(255,255,255,0.06);
-  --border-light: rgba(255,255,255,0.09);
-  --radius: 10px;
-  --font-body: 'Source Sans 3', -apple-system, sans-serif;
-  --font-mono: 'JetBrains Mono', 'SF Mono', monospace;
+  --bg:           #f5f6f8;
+  --bg-white:     #ffffff;
+  --bg-alt:       #eef0f4;
+  --text:         #0f1623;
+  --text-2:       #445062;
+  --text-3:       #8e99ab;
+  --brand:        #2358e8;
+  --brand-hover:  #1a44c4;
+  --brand-light:  #eef2fd;
+  --brand-mid:    rgba(35,88,232,0.1);
+  --green:        #16a34a;
+  --green-light:  #f0fdf4;
+  --red:          #dc2626;
+  --red-light:    #fef2f2;
+  --amber:        #d97706;
+  --amber-light:  #fffbeb;
+  --border:       rgba(15, 22, 35, 0.08);
+  --border-md:    rgba(15, 22, 35, 0.12);
+  --shadow-sm:    0 1px 3px rgba(15,22,35,0.07), 0 1px 2px rgba(15,22,35,0.05);
+  --font:         'Source Sans 3', -apple-system, sans-serif;
+  --mono:         'JetBrains Mono', 'SF Mono', monospace;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 
 body {
-  font-family: var(--font-body);
-  background: var(--bg-primary);
-  color: var(--text-primary);
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
 }
 
-.grid-bg {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  opacity: 0.025;
-  background-image:
-    linear-gradient(rgba(53,114,247,0.4) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(53,114,247,0.4) 1px, transparent 1px);
-  background-size: 80px 80px;
-}
-
-/* NAV */
 nav {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 100;
-  background: rgba(8, 12, 18, 0.88);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(245, 246, 248, 0.92);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border);
-  padding: 0 24px;
 }
-
 .nav-inner {
-  max-width: 1060px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 58px;
+  max-width: 1080px; margin: 0 auto; padding: 0 28px;
+  display: flex; align-items: center; justify-content: space-between; height: 60px;
 }
-
-.nav-logo {
-  font-family: var(--font-mono);
-  font-size: 17px;
-  font-weight: 500;
-  color: var(--text-primary);
-  text-decoration: none;
-  letter-spacing: -0.5px;
-}
-
-.nav-logo span { color: var(--brand); }
-
-.nav-links {
-  display: flex;
-  gap: 26px;
-  list-style: none;
-  align-items: center;
-}
-
-.nav-links a {
-  font-size: 14px;
-  color: var(--text-secondary);
-  text-decoration: none;
-  transition: color 0.2s;
-}
-
-.nav-links a:hover { color: var(--text-primary); }
-
+.nav-logo { text-decoration: none; display: flex; align-items: center; }
+.nav-links { display: flex; gap: 28px; list-style: none; align-items: center; }
+.nav-links a { font-size: 14px; color: var(--text-2); text-decoration: none; transition: color 0.15s; }
+.nav-links a:hover { color: var(--text); }
 .nav-cta {
-  background: var(--brand-action) !important;
-  color: #fff !important;
-  padding: 7px 18px;
-  border-radius: 6px;
-  font-weight: 600 !important;
-  font-size: 13px !important;
-  transition: background 0.2s !important;
+  background: var(--brand) !important; color: #fff !important;
+  padding: 7px 18px; border-radius: 6px; font-weight: 600 !important;
+  font-size: 13px !important; transition: background 0.15s !important;
 }
-
 .nav-cta:hover { background: var(--brand-hover) !important; }
+.nav-toggle { display: none; background: none; border: none; color: var(--text-2); font-size: 22px; cursor: pointer; }
 
-.nav-toggle {
-  display: none;
-  background: none;
-  border: none;
-  color: var(--text-secondary);
-  font-size: 22px;
-  cursor: pointer;
-}
-
-/* ARTICLE LAYOUT */
 .article {
-  position: relative;
-  z-index: 1;
-  max-width: 700px;
-  margin: 0 auto;
-  padding: 140px 24px 100px;
+  max-width: 720px; margin: 0 auto; padding: 136px 28px 100px;
 }
 
-.section-label {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  color: var(--brand);
+.eyebrow {
+  display: inline-block;
+  font-family: var(--mono); font-size: 10.5px; font-weight: 500;
+  text-transform: uppercase; letter-spacing: 1.6px; color: var(--brand);
   margin-bottom: 14px;
-  display: block;
 }
 
 .article h1 {
-  font-size: clamp(28px, 4vw, 40px);
-  font-weight: 700;
-  line-height: 1.15;
-  letter-spacing: -0.5px;
-  margin-bottom: 12px;
+  font-size: clamp(28px, 4vw, 42px); font-weight: 700;
+  line-height: 1.1; letter-spacing: -1px; margin-bottom: 12px;
 }
 
 .article .subtitle {
-  font-size: 18px;
-  color: var(--text-secondary);
-  line-height: 1.7;
-  margin-bottom: 48px;
-  max-width: 560px;
+  font-size: 18px; color: var(--text-2); line-height: 1.7;
+  margin-bottom: 52px; max-width: 560px;
 }
 
 .article h2 {
-  font-size: 22px;
-  font-weight: 700;
-  line-height: 1.25;
-  margin-top: 52px;
-  margin-bottom: 16px;
-  letter-spacing: -0.3px;
+  font-size: 22px; font-weight: 700; line-height: 1.2;
+  margin-top: 52px; margin-bottom: 14px; letter-spacing: -0.3px;
 }
 
 .article p {
-  font-size: 16px;
-  color: var(--text-secondary);
-  line-height: 1.78;
-  margin-bottom: 18px;
+  font-size: 16px; color: var(--text-2); line-height: 1.78; margin-bottom: 18px;
 }
 
-.article strong {
-  color: var(--text-primary);
-  font-weight: 600;
-}
+.article strong { color: var(--text); font-weight: 600; }
 
-/* Callout box */
+/* Callout */
 .callout {
-  background: var(--bg-card);
-  border: 1px solid var(--border-light);
+  background: var(--bg-white);
+  border: 1px solid var(--border-md);
   border-left: 3px solid var(--brand);
-  border-radius: 0 var(--radius) var(--radius) 0;
-  padding: 24px 28px;
-  margin: 32px 0;
+  border-radius: 0 10px 10px 0;
+  padding: 24px 28px; margin: 32px 0;
+  box-shadow: var(--shadow-sm);
 }
-
-.callout p {
-  margin-bottom: 0;
-  font-size: 15px;
-}
+.callout p { margin-bottom: 0; font-size: 15.5px; }
 
 /* Connectivity diagram */
 .conn-diagram {
-  background: var(--bg-card);
-  border: 1px solid var(--border-light);
-  border-radius: var(--radius);
-  padding: 32px;
-  margin: 36px 0;
+  background: var(--bg-white);
+  border: 1px solid var(--border-md);
+  border-radius: 12px; padding: 8px; margin: 36px 0;
+  box-shadow: var(--shadow-sm);
 }
 
 .conn-row {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 14px 0;
+  display: flex; align-items: center; gap: 16px;
+  padding: 16px 16px; border-radius: 8px;
 }
 
-.conn-row + .conn-row {
-  border-top: 1px solid var(--border);
+.conn-arrow {
+  font-family: var(--mono); font-size: 10px; color: var(--text-3);
+  padding: 4px 16px; text-align: center; letter-spacing: 0.5px;
 }
 
 .conn-state {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  padding: 5px 12px;
-  border-radius: 6px;
-  min-width: 100px;
-  text-align: center;
-  font-weight: 500;
-  flex-shrink: 0;
+  font-family: var(--mono); font-size: 10.5px; font-weight: 600;
+  padding: 6px 14px; border-radius: 6px;
+  min-width: 100px; text-align: center; flex-shrink: 0;
 }
 
-.s-offline { background: var(--green-dim); color: var(--green); }
-.s-deceptive { background: var(--red-dim); color: var(--red); }
-.s-online { background: var(--brand-dim); color: var(--brand); }
+.s-offline   { background: var(--green-light);  color: var(--green); }
+.s-deceptive { background: var(--red-light);    color: var(--red); }
+.s-online    { background: var(--brand-light);  color: var(--brand); }
 
-.conn-desc {
-  font-size: 13px;
-  color: var(--text-secondary);
-  line-height: 1.5;
-}
+.conn-desc { font-size: 13.5px; color: var(--text-2); line-height: 1.55; }
+.conn-desc strong { color: var(--text); }
 
-.conn-desc strong { color: var(--text-primary); }
-
-.conn-arrow {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  color: var(--text-muted);
-  padding: 6px 0;
-  text-align: center;
-}
-
-/* Back link */
 .back-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  color: var(--brand);
-  text-decoration: none;
-  font-size: 14px;
-  font-weight: 600;
-  margin-top: 40px;
-  transition: opacity 0.2s;
+  display: inline-flex; align-items: center; gap: 6px;
+  color: var(--brand); text-decoration: none; font-size: 14px; font-weight: 600;
+  margin-top: 40px; transition: opacity 0.15s;
 }
+.back-link:hover { opacity: 0.75; }
 
-.back-link:hover { opacity: 0.8; }
-
-/* FOOTER */
 footer {
-  padding: 36px 24px;
+  padding: 32px 28px; background: var(--bg-white);
   border-top: 1px solid var(--border);
-  text-align: center;
-  font-size: 13px;
-  color: var(--text-muted);
-  position: relative;
-  z-index: 1;
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 14px;
 }
-
-footer a {
-  color: var(--text-secondary);
-  text-decoration: none;
-  margin: 0 10px;
-  transition: color 0.2s;
-}
-
-footer a:hover { color: var(--text-primary); }
+.footer-logo { font-family: var(--mono); font-size: 14px; font-weight: 500; color: var(--text); text-decoration: none; }
+.footer-logo span { color: var(--brand); }
+.footer-links { display: flex; gap: 6px; flex-wrap: wrap; }
+.footer-links a { font-size: 13px; color: var(--text-3); text-decoration: none; padding: 4px 10px; border-radius: 5px; transition: color 0.15s; }
+.footer-links a:hover { color: var(--text); background: var(--bg); }
+.footer-copy { font-size: 13px; color: var(--text-3); }
 
 @media (max-width: 600px) {
   .nav-links { display: none; }
   .nav-toggle { display: block; }
   .nav-links.open {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 58px;
-    left: 0; right: 0;
-    background: rgba(8,12,18,0.97);
-    backdrop-filter: blur(20px);
-    padding: 18px 24px;
-    gap: 14px;
+    display: flex; flex-direction: column; position: absolute;
+    top: 60px; left: 0; right: 0; background: rgba(245,246,248,0.97);
+    backdrop-filter: blur(20px); padding: 16px 24px; gap: 14px;
     border-bottom: 1px solid var(--border);
   }
-  .article { padding-top: 110px; }
+  .article { padding-top: 104px; }
   .conn-row { flex-direction: column; align-items: flex-start; gap: 8px; }
+  footer { flex-direction: column; align-items: flex-start; }
 }
 </style>
 </head>
 <body>
 
-<div class="grid-bg"></div>
-
 <nav>
   <div class="nav-inner">
-    <a href="index.html" class="nav-logo">Bloc<span>Nav</span></a>
+    <a href="index.html" class="nav-logo"><img src="assets/blocnavbrand2.png" alt="BlocNav" style="height:54px;width:auto;display:block;border-radius:10px;"></a>
     <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">☰</button>
     <ul class="nav-links">
       <li><a href="index.html#features">Features</a></li>
@@ -319,7 +190,7 @@ footer a:hover { color: var(--text-primary); }
 </nav>
 
 <article class="article">
-  <span class="section-label">Technical Insight</span>
+  <span class="eyebrow">Technical Insight</span>
   <h1>Why Slow Networks Are Worse Than Offline</h1>
   <p class="subtitle">Most software treats connectivity as binary — online or offline. In real field conditions, that assumption will cost you data.</p>
 
@@ -376,13 +247,14 @@ footer a:hover { color: var(--text-primary); }
 </article>
 
 <footer>
-  <div>
-    <p style="margin-bottom:10px;">© 2026 BlocNav. All rights reserved.</p>
+  <a href="index.html" class="footer-logo">Bloc<span>Nav</span></a>
+  <div class="footer-links">
     <a href="https://github.com/L3Pro/blocnav-reliability">Engineering Docs</a>
-    <a href="slow-networks.html">The Slow Network Problem</a>
+    <a href="slow-networks.html">Slow Network Problem</a>
     <a href="privacy.html">Privacy</a>
     <a href="terms.html">Terms</a>
   </div>
+  <span class="footer-copy">© 2026 BlocNav</span>
 </footer>
 
 </body>
