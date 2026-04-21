@@ -110,46 +110,58 @@ p.lead { font-size: 17px; color: var(--text-2); line-height: 1.72; }
 .btn-primary { background: var(--brand); color: #fff; box-shadow: 0 2px 8px rgba(35,88,232,0.28); }
 .btn-primary:hover { background: var(--brand-hover); transform: translateY(-1px); box-shadow: 0 4px 14px rgba(35,88,232,0.32); }
 .btn-ghost {
-  background: var(--bg-white); color: var(--text-2);
-  border: 1px solid var(--border-md); box-shadow: var(--shadow-sm);
+  background: rgba(255,255,255,0.15); color: #fff;
+  border: 1px solid rgba(255,255,255,0.35); backdrop-filter: blur(8px);
 }
-.btn-ghost:hover { color: var(--text); border-color: rgba(15,22,35,0.2); }
+.btn-ghost:hover { background: rgba(255,255,255,0.25); border-color: rgba(255,255,255,0.5); color: #fff; }
 
 /* ── HERO ── */
 .hero {
-  padding: 136px 28px 80px;
-  background: var(--bg-white);
-  border-bottom: 1px solid var(--border);
+  position: relative; min-height: 88vh;
+  display: flex; align-items: center;
+  padding: 100px 28px 80px;
+  overflow: hidden;
 }
-.hero-grid {
-  display: grid; grid-template-columns: 1fr 1.1fr; gap: 64px;
-  align-items: center; max-width: 1080px; margin: 0 auto;
+.hero-bg {
+  position: absolute; inset: 0; z-index: 0;
+  background-image: url('assets/pexels-vividcafe-681335.jpg');
+  background-size: cover; background-position: center;
 }
-.hero h1 em { font-style: normal; color: var(--brand); }
-.hero-sub {
-  font-size: 13px; font-weight: 400; color: var(--text-3);
-  margin-bottom: 10px; letter-spacing: 0.1px;
-  font-family: var(--mono);
+.hero-bg::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(8,14,26,0.72) 0%, rgba(8,14,26,0.55) 60%, rgba(8,14,26,0.45) 100%);
 }
-.hero-badges { display: flex; flex-wrap: wrap; gap: 7px; margin: 22px 0 28px; }
-.badge {
-  font-family: var(--mono); font-size: 10.5px; padding: 4px 11px;
-  border-radius: 100px; border: 1px solid var(--border-md);
-  color: var(--text-3); background: var(--bg);
+.hero-content {
+  position: relative; z-index: 1;
+  max-width: 780px; margin: 0 auto; text-align: center;
 }
-.badge--brand {
-  border-color: rgba(35,88,232,0.2); color: var(--brand);
-  background: var(--brand-light);
+.hero h1 {
+  color: #fff; letter-spacing: -2px;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.3);
 }
-.hero-ctas { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 4px; }
+.hero h1 em { font-style: normal; color: #fff; }
+.hero p.lead {
+  color: rgba(255,255,255,0.85); font-size: 18px;
+  max-width: 620px; margin: 0 auto 32px;
+}
+.hero p.lead strong { color: #fff; font-weight: 600; }
+.hero-ctas { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
 
-/* Hero map */
-.hero-map {
+/* ── SHOWCASE + AUDIENCE (combined) ── */
+.showcase {
+  background: var(--bg); border-bottom: 1px solid var(--border);
+  padding: 64px 28px;
+}
+.showcase-inner {
+  max-width: 1080px; margin: 0 auto;
+  display: grid; grid-template-columns: 1.2fr 1fr; gap: 56px; align-items: center;
+}
+.showcase-map {
   position: relative; background: var(--bg-white);
   border: 1px solid var(--border-md); border-radius: 14px;
   overflow: hidden; box-shadow: var(--shadow-lg);
 }
-.hero-map img { display: block; width: 100%; height: auto; }
+.showcase-map img { display: block; width: 100%; height: auto; }
 .map-label {
   position: absolute; background: rgba(15,22,35,0.78);
   color: #fff; border-radius: 5px; padding: 4px 8px;
@@ -161,7 +173,6 @@ p.lead { font-size: 17px; color: var(--text-2); line-height: 1.72; }
 .label-hazard   { top: 21%; left: 66%; }
 .label-active   { top: 49%; left: 44%; }
 .label-track    { top: 47%; left: 12%; }
-
 .map-status-bar {
   position: absolute; bottom: 0; left: 0; right: 0;
   background: rgba(15, 22, 35, 0.82); backdrop-filter: blur(8px);
@@ -174,24 +185,29 @@ p.lead { font-size: 17px; color: var(--text-2); line-height: 1.72; }
 @keyframes blink { 0%,100% { opacity:1; } 50% { opacity:0.3; } }
 .status-sync { color: rgba(255,255,255,0.35); }
 
-/* ── AUDIENCE STRIP ── */
-.audience {
-  background: var(--bg); border-bottom: 1px solid var(--border);
-  padding: 36px 28px;
+.showcase-right { display: flex; flex-direction: column; gap: 36px; }
+.showcase-right h3 {
+  font-size: 22px; font-family: var(--font); font-weight: 700;
+  color: var(--text); margin-bottom: 14px; letter-spacing: 0.5px;
+  text-transform: uppercase;
 }
-.audience-inner { max-width: 1080px; margin: 0 auto; display: flex; align-items: center; gap: 28px; flex-wrap: wrap; }
-.audience-label {
-  font-family: var(--mono); font-size: 10px; text-transform: uppercase;
-  letter-spacing: 1.5px; color: var(--text-3); white-space: nowrap; flex-shrink: 0;
+.badge-group { display: flex; flex-wrap: wrap; gap: 8px; }
+.badge {
+  font-family: var(--mono); font-size: 10.5px; padding: 5px 12px;
+  border-radius: 100px; border: 1px solid var(--border-md);
+  color: var(--text-3); background: var(--bg);
 }
-.audience-divider { width: 1px; height: 24px; background: var(--border-md); flex-shrink: 0; }
-.audience-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.badge--brand {
+  border-color: rgba(35,88,232,0.2); color: var(--brand);
+  background: var(--brand-light);
+}
 .audience-tag {
   padding: 7px 16px; border-radius: 100px;
   border: 1px solid var(--border-md); background: var(--bg-white);
-  font-size: 13px; color: var(--text-2);
-  box-shadow: var(--shadow-sm);
+  font-size: 13px; color: var(--text-2); box-shadow: var(--shadow-sm);
 }
+
+
 
 /* ── FEATURES ── */
 .features { padding: 96px 28px; background: var(--bg-white); }
@@ -380,10 +396,10 @@ footer {
 @media (max-width: 960px) {
   .feature-grid { grid-template-columns: repeat(2,1fr); }
   .why-layout { grid-template-columns: 1fr; gap: 40px; }
+  .showcase-inner { grid-template-columns: 1fr; }
 }
 @media (max-width: 800px) {
-  .hero-grid { grid-template-columns: 1fr; gap: 40px; }
-  .hero { padding-top: 104px; }
+  .hero { min-height: 70vh; padding-top: 90px; }
   .steps { grid-template-columns: 1fr 1fr; }
   .step { border-right: none; border-bottom: 1px solid var(--border); }
   .step:nth-child(odd) { border-right: 1px solid var(--border); }
@@ -430,52 +446,52 @@ footer {
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-grid">
-
-    <div>
-      <h1>Maps that work<br><em>where signal&nbsp;doesn't.</em></h1>
-      <p class="lead"><strong>Offline-First Field Mapping</strong> — Drop POIs, log GPS tracks, draw coverage areas, and sync when you're back in range. No enterprise license. No failed downloads. No lost data.</p>
-      <div class="hero-badges">
-        <span class="badge badge--brand">PWA — Any Device</span>
-        <span class="badge">Works on 2G</span>
-        <span class="badge">GPS Track Logging</span>
-        <span class="badge">Zero Data Loss</span>
-        <span class="badge badge--brand">Tested in Texas field ops</span>
-      </div>
-      <div class="hero-ctas">
-        <a href="#contact" class="btn btn-primary">Get Access for Your Team</a>
-        <a href="#features" class="btn btn-ghost">See What It Does →</a>
-      </div>
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <h1>Maps that work<br><em>where signal&nbsp;doesn't.</em></h1>
+    <p class="lead"><strong>Offline-First Field Mapping</strong> — Drop POIs, log GPS tracks, draw coverage areas, and sync when you're back in range. No enterprise license. No failed downloads. No lost data.</p>
+    <div class="hero-ctas">
+      <a href="#contact" class="btn btn-primary">Get Access for Your Team</a>
+      <a href="#features" class="btn btn-ghost">See What It Does →</a>
     </div>
-
-    <div>
-      <div class="hero-map">
-        <img src="assets/blocnav-hero.png" alt="BlocNav offline field mapping — live screenshot" />
-        <div class="map-label label-complete">✓ Sector complete</div>
-        <div class="map-label label-active">Active search sector</div>
-        <div class="map-label label-track">Responder path</div>
-        <div class="map-label label-hazard">⚠ Hazard reported</div>
-        <div class="map-status-bar">
-          <span class="status-online"><span class="status-dot"></span>Offline mode · cached tiles</span>
-          <span class="status-sync">Last sync 4m ago</span>
-        </div>
-      </div>
-    </div>
-
   </div>
 </section>
 
-<!-- AUDIENCE -->
-<section class="audience">
-  <div class="audience-inner">
-    <span class="audience-label">Built for</span>
-    <div class="audience-divider"></div>
-    <div class="audience-tags">
-      <span class="audience-tag">🔍 Search &amp; Rescue</span>
-      <span class="audience-tag">🌿 Environmental Survey</span>
-      <span class="audience-tag">⚡ Utility Inspection</span>
-      <span class="audience-tag">🚨 Disaster Response</span>
-      <span class="audience-tag">🌾 Ranch &amp; Land Management</span>
+<!-- SHOWCASE + AUDIENCE -->
+<section class="showcase">
+  <div class="showcase-inner">
+    <div class="showcase-map">
+      <img src="assets/blocnav-hero.png" alt="BlocNav offline field mapping — live screenshot" />
+      <div class="map-label label-complete">✓ Sector complete</div>
+      <div class="map-label label-active">Active search sector</div>
+      <div class="map-label label-track">Responder path</div>
+      <div class="map-label label-hazard">⚠ Hazard reported</div>
+      <div class="map-status-bar">
+        <span class="status-online"><span class="status-dot"></span>Offline mode · cached tiles</span>
+        <span class="status-sync">Last sync 4m ago</span>
+      </div>
+    </div>
+    <div class="showcase-right">
+      <div>
+        <h3>Built for</h3>
+        <div class="badge-group">
+          <span class="audience-tag">🔍 Search &amp; Rescue</span>
+          <span class="audience-tag">🌿 Environmental Survey</span>
+          <span class="audience-tag">⚡ Utility Inspection</span>
+          <span class="audience-tag">🚨 Disaster Response</span>
+          <span class="audience-tag">🌾 Ranch &amp; Land Management</span>
+        </div>
+      </div>
+      <div>
+        <h3>Platform highlights</h3>
+        <div class="badge-group">
+          <span class="badge badge--brand">PWA — Any Device</span>
+          <span class="badge">Works on 2G</span>
+          <span class="badge">GPS Track Logging</span>
+          <span class="badge">Zero Data Loss</span>
+          <span class="badge badge--brand">Tested in Texas field ops</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -631,7 +647,7 @@ footer {
     <span class="eyebrow">Pilot Program</span>
     <h2>Ready to test it in the field?</h2>
     <p class="lead">BlocNav is in active pilot testing with field teams in Texas. If your team works in low-connectivity environments and needs mapping that actually works offline, let's talk.</p>
-    <a href="/cdn-cgi/l/email-protection#096a66677d686a7d496b65666a67687f276a6664" class="btn btn-primary"><span class="__cf_email__" data-cfemail="9dfef2f3e9fcfee9ddfff1f2fef3fcebb3fef2f0">[email&#160;protected]</span></a>
+    <a href="/cdn-cgi/l/email-protection#86e5e9e8f2e7e5f2c6e4eae9e5e8e7f0a8e5e9eb" class="btn btn-primary"><span class="__cf_email__" data-cfemail="11727e7f6570726551737d7e727f70673f727e7c">[email&#160;protected]</span></a>
     <span class="cta-note">Tell us your use case — we'll set up a walkthrough.</span>
   </div>
 </section>
