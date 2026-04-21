@@ -161,7 +161,7 @@ p.lead { font-size: 17px; color: var(--text-2); line-height: 1.72; }
         margin: 0 auto;
         display: flex;
         flex-direction: column;
-        gap: 32px;
+        gap: 20px;
         text-align: center;
     }
 .showcase-map       { }
@@ -284,6 +284,14 @@ p.lead { font-size: 17px; color: var(--text-2); line-height: 1.72; }
         line-height: 1.15;
         margin-bottom: 16px;
         text-align: center;
+    }
+
+    .bloc-black {
+        color: var(--text); /* same black used everywhere else */
+    }
+
+    .nav-blue {
+        color: var(--brand);
     }
 
 .feature-grid {
@@ -570,7 +578,6 @@ footer {
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-content">
-    <img src="assets/blocnavlogosquare.png" alt="BlocNav" style="height:80px;width:auto;border-radius:14px;margin-bottom:24px;display:block;margin-left:auto;margin-right:auto;">
     <h1>Maps that work<br><em>where signal&nbsp;doesn't.</em></h1>
     <div class="hero-ctas">
       <a href="#contact" class="btn btn-primary">Get Access for Your Team</a>
@@ -581,14 +588,16 @@ footer {
 
 <!-- SHOWCASE + AUDIENCE -->
 <section class="showcase">
-    <div class="section-head" style="text-align:center; margin-bottom:40px;">
-        <span class="section-title">BlocNav at a Glimpse</span>
+    <div class="section-head" style="text-align:center; margin-bottom:20px;">
+        <span class="section-title">
+            <span class="bloc-black">Bloc</span><span class="nav-blue">Nav</span> at a Glimpse
+        </span>
     </div>
     <div class="showcase-inner">
 
         <!-- 2. Description -->
         <div class="showcase-description">
-            <h3 style="font-size:22px; font-weight:700; margin-bottom:10px;">
+            <h3 style="font-size:22px; font-weight:700; margin-bottom:6px;">
                 Offline-First Field Mapping
             </h3>
             <p style="font-size:15px; color:var(--text-2); max-width:520px; margin:0 auto;">
