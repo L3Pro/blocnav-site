@@ -37,7 +37,10 @@
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+    html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 70px;
+    }
 
 body {
   font-family: var(--font);
@@ -354,8 +357,18 @@ p.lead { font-size: 17px; color: var(--text-2); line-height: 1.72; }
 .compare-cell.us strong { color: var(--brand); font-weight: 600; }
 
 /* Mobile: stack each row as a card */
-@media (max-width: 600px) {
-  .compare-head-row { display: none; }
+    @media (max-width: 600px) {
+        h1 {
+            font-size: 28px;
+        }
+        /* keep for other sections */
+
+        .hero h1 {
+            font-size: 48px;
+            line-height: 1.15;
+            letter-spacing: -1px;
+        }
+    }
   .compare-row {
     display: flex; flex-direction: column;
     border-bottom: none; margin-bottom: 12px; border-radius: 10px; overflow: hidden;
@@ -542,11 +555,18 @@ footer {
   .nav-links { display: none; }
   .nav-toggle { display: block; }
   .nav-links.open {
-    display: flex; flex-direction: column; position: absolute;
-    top: 60px; left: 0; right: 0; background: rgba(245,246,248,0.97);
-    backdrop-filter: blur(20px); padding: 16px 24px; gap: 14px;
-    border-bottom: 1px solid var(--border);
-  }
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 60px;
+  left: 0;
+  right: 0;
+  background: #ffffff;
+  padding: 16px 24px;
+  gap: 14px;
+  border-bottom: 1px solid var(--border);
+  z-index: 200;
+}
   .feature-grid { grid-template-columns: 1fr; }
   .steps { grid-template-columns: 1fr; }
   .step { border-right: none !important; }
@@ -565,11 +585,11 @@ footer {
   <div class="nav-inner">
     <a href="index.html" class="nav-logo"><img src="assets/blocnavbrand2.png" alt="BlocNav" style="height:54px;width:auto;display:block;border-radius:10px;"></a>
     <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">☰</button>
-    <ul class="nav-links">
-      <li><a href="#features">Features</a></li>
-      <li><a href="#how">How It Works</a></li>
-      <li><a href="#why">Why BlocNav</a></li>
-      <li><a href="#contact" class="nav-cta">Get in Touch</a></li>
+    <ul class="nav-links" onclick="closeMenu()">
+        <li><a href="#features">Features</a></li>
+        <li><a href="#how">How It Works</a></li>
+        <li><a href="#why">Why BlocNav</a></li>
+        <li><a href="#contact" class="nav-cta">Get in Touch</a></li>
     </ul>
   </div>
 </nav>
@@ -877,6 +897,13 @@ function applyCTA(v) {
 applyBrand(TWEAK_DEFAULTS.brand);
 applyGrid(TWEAK_DEFAULTS.grid);
 applyCTA(TWEAK_DEFAULTS.cta);
+</script>
+
+<script>
+    function closeMenu() {
+        const nav = document.querySelector('.nav-links');
+        nav.classList.remove('open');
+    }
 </script>
 
 </body>
