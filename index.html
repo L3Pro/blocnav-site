@@ -117,19 +117,19 @@ p.lead { font-size: 17px; color: var(--text-2); line-height: 1.72; }
 
 /* ── HERO ── */
 .hero {
-  position: relative; min-height: 88vh;
+  position: relative; min-height: 65vh;
   display: flex; align-items: center;
-  padding: 100px 28px 80px;
+  padding: 100px 28px 60px;
   overflow: hidden;
 }
 .hero-bg {
-  position: absolute; inset: 0; z-index: 0;
+  position: absolute; top: -25px; bottom: -25px; left: 0; right: 0; z-index: 0;
   background-image: url('assets/pexels-vividcafe-681335.jpg');
   background-size: cover; background-position: center;
 }
 .hero-bg::after {
   content: ''; position: absolute; inset: 0;
-  background: linear-gradient(135deg, rgba(8,14,26,0.72) 0%, rgba(8,14,26,0.55) 60%, rgba(8,14,26,0.45) 100%);
+  background: linear-gradient(135deg, rgba(8,14,26,0.22) 0%, rgba(8,14,26,0.12) 60%, rgba(8,14,26,0.08) 100%);
 }
 .hero-content {
   position: relative; z-index: 1;
@@ -156,12 +156,15 @@ p.lead { font-size: 17px; color: var(--text-2); line-height: 1.72; }
   max-width: 1080px; margin: 0 auto;
   display: grid; grid-template-columns: 1.2fr 1fr; gap: 56px; align-items: center;
 }
+.showcase-map       { }
+.showcase-built-for { }
+.showcase-platform  { }
 .showcase-map {
   position: relative; background: var(--bg-white);
   border: 1px solid var(--border-md); border-radius: 14px;
   overflow: hidden; box-shadow: var(--shadow-lg);
 }
-.showcase-map img { display: block; width: 100%; height: auto; }
+.showcase-map img { display: block; width: 100%; height: auto;  }
 .map-label {
   position: absolute; background: rgba(15,22,35,0.78);
   color: #fff; border-radius: 5px; padding: 4px 8px;
@@ -186,6 +189,7 @@ p.lead { font-size: 17px; color: var(--text-2); line-height: 1.72; }
 .status-sync { color: rgba(255,255,255,0.35); }
 
 .showcase-right { display: flex; flex-direction: column; gap: 36px; }
+.showcase-built-for, .showcase-platform { }
 .showcase-right h3 {
   font-size: 22px; font-family: var(--font); font-weight: 700;
   color: var(--text); margin-bottom: 14px; letter-spacing: 0.5px;
@@ -269,6 +273,38 @@ p.lead { font-size: 17px; color: var(--text-2); line-height: 1.72; }
 .compare-cell.us { color: var(--text); background: var(--bg-white); }
 .compare-cell.us strong { color: var(--brand); font-weight: 600; }
 
+/* Mobile: stack each row as a card */
+@media (max-width: 600px) {
+  .compare-head-row { display: none; }
+  .compare-row {
+    display: flex; flex-direction: column;
+    border-bottom: none; margin-bottom: 12px; border-radius: 10px; overflow: hidden;
+    border: 1px solid var(--border-md);
+  }
+  .compare-row:last-child { margin-bottom: 0; }
+  .compare-cell { border-right: none !important; }
+  .compare-cell.them {
+    border-bottom: 1px solid var(--border);
+    position: relative; padding-top: 36px;
+  }
+  .compare-cell.them::before {
+    content: '✕  Traditional tools';
+    position: absolute; top: 10px; left: 16px;
+    font-family: var(--mono); font-size: 10px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 1px; color: var(--red);
+  }
+  .compare-cell.us {
+    position: relative; padding-top: 36px;
+    background: var(--brand-light);
+  }
+  .compare-cell.us::before {
+    content: '✓  BlocNav';
+    position: absolute; top: 10px; left: 16px;
+    font-family: var(--mono); font-size: 10px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 1px; color: var(--brand);
+  }
+}
+
 /* ── WHY ── */
 .why { padding: 96px 28px; background: var(--bg-white); }
 .why-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
@@ -331,9 +367,9 @@ p.lead { font-size: 17px; color: var(--text-2); line-height: 1.72; }
 }
 .cta-bg {
   position: absolute; inset: 0; z-index: 0;
-  background-image: url('assets/pexels-vividcafe-681335.jpg');
+  background-image: url('assets/nightmap.jpg');
   background-size: cover; background-position: center;
-  opacity: 0.18;
+  opacity: 0.45;
 }
 .cta .container { position: relative; z-index: 1; }
 .cta .eyebrow { color: rgba(255,255,255,0.45); }
@@ -472,7 +508,7 @@ footer {
       </div>
     </div>
     <div class="showcase-right">
-      <div>
+      <div class="showcase-built-for">
         <h3>Built for</h3>
         <div class="badge-group">
           <span class="audience-tag">🔍 Search &amp; Rescue</span>
@@ -482,7 +518,7 @@ footer {
           <span class="audience-tag">🌾 Ranch &amp; Land Management</span>
         </div>
       </div>
-      <div>
+      <div class="showcase-platform">
         <h3>Platform highlights</h3>
         <div class="badge-group">
           <span class="badge badge--brand">PWA — Any Device</span>
@@ -647,7 +683,9 @@ footer {
     <span class="eyebrow">Pilot Program</span>
     <h2>Ready to test it in the field?</h2>
     <p class="lead">BlocNav is in active pilot testing with field teams in Texas. If your team works in low-connectivity environments and needs mapping that actually works offline, let's talk.</p>
-    <a href="/cdn-cgi/l/email-protection#492a26273d282a3d092b25262a27283f672a2624" class="btn btn-primary"><span class="__cf_email__" data-cfemail="7b1814150f1a180f3b19171418151a0d55181416">[email&#160;protected]</span></a>
+    <a href="mailto:contact@blocnav.com" class="btn btn-primary">
+        contact@blocnav.com
+    </a>
     <span class="cta-note">Tell us your use case — we'll set up a walkthrough.</span>
   </div>
 </section>
