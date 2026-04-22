@@ -248,7 +248,7 @@ p.lead { font-size: 17px; color: var(--text-2); line-height: 1.72; }
 }
 .badge-group { display: flex; flex-wrap: wrap; gap: 8px; }
 .badge {
-  font-family: var(--mono); font-size: 10.5px; padding: 5px 12px;
+  font-family: var(--mono); font-size: 12px; padding: 5px 12px;
   border-radius: 100px; border: 1px solid var(--border-md);
   color: var(--text-3); background: var(--bg);
 }
@@ -345,8 +345,8 @@ p.lead { font-size: 17px; color: var(--text-2); line-height: 1.72; }
         align-items: stretch;
     }
 .col-head {
-  padding: 14px 24px; font-family: var(--mono); font-size: 11px;
-  font-weight: 600; text-transform: uppercase; letter-spacing: 1px;
+  padding: 14px 24px; font-family: var(--mono); font-size: 14px;
+  font-weight: 800; text-transform: uppercase; letter-spacing: 1px;
   display: flex; align-items: center; gap: 7px;
 }
 .col-head.them { background: var(--red-light); color: var(--red); border-right: 1px solid var(--border-md); }
@@ -564,11 +564,12 @@ footer {
                     position: absolute;
                     top: 8px;
                     left: 16px;
-                    font-size: 10px;
+                    font-size: 14px;
                     font-family: var(--mono);
                     letter-spacing: 1px;
                     color: var(--red);
                     text-transform: uppercase;
+                    font-weight: 500;
                 }
 
             /* BOTTOM = BlocNav (stronger, highlighted) */
@@ -585,11 +586,12 @@ footer {
                     position: absolute;
                     top: 8px;
                     left: 16px;
-                    font-size: 10px;
+                    font-size: 14px;
                     font-family: var(--mono);
                     letter-spacing: 1px;
                     color: var(--brand);
                     text-transform: uppercase;
+                    font-weight: 500;
                 }
     }
   .nav-links { display: none; }
@@ -638,7 +640,7 @@ footer {
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-content">
-    <h1>Maps that work<br><em>where signal&nbsp;doesn't.</em></h1>
+    <h1>Maps that work<br><em>when the internet&nbsp;<br>doesn't.</em></h1>
     <div class="hero-ctas">
       <a href="#contact" class="btn btn-primary">Get Access for Your Team</a>
       <a href="#features" class="btn btn-ghost">See What It Does →</a>
@@ -696,9 +698,9 @@ footer {
             <h3>Platform highlights</h3>
             <div class="badge-group" style="justify-content:center;">
                 <span class="badge badge--brand">PWA — Any Device</span>
-                <span class="badge">Works on 2G</span>
-                <span class="badge">GPS Track Logging</span>
-                <span class="badge">Zero Data Loss</span>
+                <span class="badge badge--brand">Works on 2G</span>
+                <span class="badge badge--brand">GPS Track Logging</span>
+                <span class="badge badge--brand">Zero Data Loss</span>
                 <span class="badge badge--brand">Tested in Texas field ops</span>
             </div>
         </div>
