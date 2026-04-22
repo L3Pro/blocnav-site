@@ -525,46 +525,73 @@ footer {
   footer { flex-direction: column; align-items: flex-start; }
 }
 @media (max-width: 600px) {
-    /* ---- FIXED COMPARISON ---- */
+    /* MOBILE — CLEAN CARD STYLE */
+    @media (max-width: 600px) {
 
-    .compare-table {
-        display: block;
-    }
-
-    .compare-head-row {
-        display: none;
-    }
-
-    .compare-row {
-        display: flex;
-        flex-direction: column;
-        border: 1px solid var(--border-md);
-        border-radius: 10px;
-        overflow: hidden;
-        margin-bottom: 12px;
-    }
-
-        .compare-row:last-child {
-            margin-bottom: 0;
+        .compare-table {
+            display: block;
         }
 
-    .compare-cell {
-        border-right: none !important;
-        padding: 16px 18px;
+        .compare-head-row {
+            display: none;
+        }
+
+        .compare-row {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 16px;
+            border-radius: 12px;
+            overflow: hidden;
+            border: none;
+        }
+
+        .compare-cell {
+            padding: 16px 18px;
+            border: none !important;
+        }
+
+            /* TOP = Traditional (lighter, less emphasis) */
+            .compare-cell.them {
+                background: #f8f9fb;
+                color: var(--text-2);
+                font-size: 14px;
+                padding-top: 28px;
+                position: relative;
+            }
+
+                .compare-cell.them::before {
+                    content: '✕  Traditional tools';
+                    position: absolute;
+                    top: 8px;
+                    left: 16px;
+                    font-size: 10px;
+                    font-family: var(--mono);
+                    letter-spacing: 1px;
+                    color: var(--red);
+                    text-transform: uppercase;
+                }
+
+            /* BOTTOM = BlocNav (stronger, highlighted) */
+            .compare-cell.us {
+                background: var(--brand-light);
+                font-size: 15px;
+                font-weight: 500;
+                padding-top: 28px;
+                position: relative;
+            }
+
+                .compare-cell.us::before {
+                    content: '✓  BlocNav';
+                    position: absolute;
+                    top: 8px;
+                    left: 16px;
+                    font-size: 10px;
+                    font-family: var(--mono);
+                    letter-spacing: 1px;
+                    color: var(--brand);
+                    text-transform: uppercase;
+                }
     }
-
-        .compare-cell.them {
-            border-bottom: 1px solid var(--border);
-            position: relative;
-            padding-top: 36px;
-            background: #fafafa;
-        }
-
-        .compare-cell.us {
-            position: relative;
-            padding-top: 36px;
-            background: var(--brand-light);
-        }
   .nav-links { display: none; }
   .nav-toggle { display: block; }
   .nav-links.open {
@@ -585,7 +612,7 @@ footer {
   .step { border-right: none !important; }
   .compare-head-row, .compare-row { grid-template-columns: 1fr; }
   .col-head.them, .compare-cell.them { border-right: none; border-bottom: 1px solid var(--border); }
-  h1 { font-size: 28px; }
+  h1 { font-size: 48px; }
   .hero-ctas { flex-direction: column; }
   .btn { justify-content: center; }
 }
