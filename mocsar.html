@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BlocNav for Search &amp; Rescue — SAR 2026</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #f5f6f8;
+            --bg-white: #ffffff;
+            --text: #0f1623;
+            --text-2: #445062;
+            --brand: #2358e8;
+            --brand-hover: #1a44c4;
+            --border: rgba(15,22,35,0.08);
+            --font: 'Source Sans 3', sans-serif;
+            --mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font);
+            background: var(--bg);
+            color: var(--text);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* NAV */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: #fff;
+            border-bottom: 1px solid var(--border);
+            z-index: 100;
+        }
+
+        .nav-inner {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 0 24px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-logo img {
+            height: 42px;
+        }
+
+        .nav-label {
+            font-family: var(--mono);
+            font-size: 11px;
+            color: var(--brand);
+            letter-spacing: 0.05em;
+        }
+
+        /* BANNER */
+        .top-banner {
+            position: fixed;
+            top: 60px;
+            left: 0;
+            right: 0;
+            background: linear-gradient(90deg, #2358e8, #1a44c4);
+            color: white;
+            z-index: 99;
+            border-bottom: 1px solid rgba(255,255,255,0.15);
+        }
+
+        .banner-inner {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 9px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .banner-link {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+            .banner-link:hover {
+                text-decoration: underline;
+            }
+
+        /* HERO */
+        .hero {
+            padding: 160px 20px 56px;
+            text-align: center;
+        }
+
+            .hero h1 {
+                font-size: clamp(32px, 6vw, 48px);
+                font-weight: 700;
+                letter-spacing: -1.5px;
+                line-height: 1.1;
+                margin-bottom: 16px;
+            }
+
+            .hero p {
+                font-size: 18px;
+                color: var(--text-2);
+                max-width: 500px;
+                margin: 0 auto 28px;
+                line-height: 1.6;
+            }
+
+        /* BUTTONS */
+        .btn {
+            display: inline-block;
+            padding: 16px 28px;
+            background: var(--brand);
+            color: #fff;
+            font-weight: 600;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 17px;
+            box-shadow: 0 6px 20px rgba(35,88,232,0.25);
+            transition: background 0.15s;
+        }
+
+            .btn:hover {
+                background: var(--brand-hover);
+            }
+
+        .btn-full {
+            display: block;
+            width: 100%;
+            text-align: center;
+            margin-top: 16px;
+            padding: 16px 28px;
+            background: var(--brand);
+            color: #fff;
+            font-weight: 600;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 17px;
+            box-shadow: 0 6px 20px rgba(35,88,232,0.25);
+            transition: background 0.15s;
+        }
+
+            .btn-full:hover {
+                background: var(--brand-hover);
+            }
+
+        /* SECTIONS */
+        .section {
+            max-width: 780px;
+            margin: 0 auto 24px;
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 28px 32px;
+        }
+
+            .section h2 {
+                font-size: 20px;
+                font-weight: 700;
+                letter-spacing: -0.3px;
+                margin-bottom: 10px;
+            }
+
+            .section p {
+                color: var(--text-2);
+                font-size: 16px;
+                line-height: 1.65;
+                margin-bottom: 10px;
+            }
+
+                .section p:last-child {
+                    margin-bottom: 0;
+                }
+
+            /* SARCOP callout style */
+            .section.sarcop {
+                border-left: 3px solid var(--brand);
+            }
+
+        /* CTA */
+        .cta {
+            max-width: 780px;
+            margin: 0 auto 24px;
+            text-align: center;
+            padding: 40px 32px;
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+        }
+
+            .cta h2 {
+                font-size: 22px;
+                font-weight: 700;
+                letter-spacing: -0.3px;
+                margin-bottom: 8px;
+            }
+
+            .cta p {
+                color: var(--text-2);
+                font-size: 15px;
+                margin-bottom: 0;
+            }
+
+        /* CONTACT */
+        .contact {
+            max-width: 780px;
+            margin: 0 auto 56px;
+            text-align: center;
+            font-size: 14px;
+            color: var(--text-2);
+            padding: 20px;
+            line-height: 1.9;
+        }
+
+            .contact a {
+                color: var(--brand);
+                text-decoration: none;
+            }
+
+                .contact a:hover {
+                    text-decoration: underline;
+                }
+
+            .contact strong {
+                color: var(--text);
+            }
+
+        /* WRAPPER for body sections */
+        .body-wrap {
+            padding: 0 20px;
+        }
+
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .section, .cta {
+                padding: 22px 20px;
+                border-radius: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAV -->
+    <nav>
+        <div class="nav-inner">
+            <a href="https://blocnav.com" class="nav-logo">
+                <img src="https://blocnav.com/assets/blocnavbrand2.png" alt="BlocNav" />
+            </a>
+            <span class="nav-label">SAR 2026</span>
+        </div>
+    </nav>
+
+    <!-- BANNER -->
+    <div class="top-banner">
+        <div class="banner-inner">
+            <span>🔍 Live SAR demo — works offline</span>
+            <a href="https://map.blocnav.com/?demo=sar" class="banner-link">Open Map →</a>
+        </div>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero">
+        <h1>Maps that work where signal doesn't.</h1>
+        <p>
+            Built for search &amp; rescue teams operating off-grid.
+            Drop points, track movement, mark coverage — even with no connection.
+        </p>
+        <a class="btn" href="https://map.blocnav.com/?demo=sar">Open Demo Map</a>
+    </section>
+
+    <div class="body-wrap">
+
+        <!-- SARCOP — lead with the differentiator -->
+        <div class="section sarcop">
+            <h2>Works alongside your existing tools — SARCOP, ArcGIS, CalTopo</h2>
+            <p>BlocNav isn't a system of record. It's what keeps your team collecting when the tower goes down.</p>
+            <p>When connectivity returns, your data flows back into your existing workflow.</p>
+        </div>
+
+        <!-- WHY -->
+        <div class="section">
+            <h2>Why this exists</h2>
+            <p>Most SAR tools assume connectivity.</p>
+            <p>When signal drops, maps fail to load, data gets lost, and teams fall back to paper. BlocNav is built for that exact moment.</p>
+        </div>
+
+        <!-- CTA -->
+        <div class="cta">
+            <h2>Want to try this in the field?</h2>
+            <p>We're working with a small number of teams to test BlocNav in real-world conditions.</p>
+            <a class="btn-full" href="mailto:contact@blocnav.com?subject=BlocNav%20Pilot%20(MoCSAR)">
+                Request Pilot Access
+            </a>
+        </div>
+
+        <!-- CONTACT -->
+        <div class="contact">
+            <strong>L.J. Lambert</strong> · BlocNav<br />
+            <a href="tel:7132485986">713-248-5986</a> · <a href="mailto:contact@blocnav.com">contact@blocnav.com</a>
+        </div>
+
+    </div>
+
+</body>
+</html>
