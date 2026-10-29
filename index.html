@@ -310,6 +310,8 @@ p.lead { font-size: 17px; color: var(--text-2); line-height: 1.72; }
   transition: background 0.15s;
 }
 .feature-card:hover { background: var(--brand-light); }
+/* Keep the final card balanced when the feature grid has an odd number of items. */
+.feature-grid > .feature-card:last-child:nth-child(odd) { grid-column: 1 / -1; }
 .feature-icon {
   width: 36px; height: 36px; border-radius: 8px;
   background: var(--bg); border: 1px solid var(--border-md);
@@ -731,7 +733,7 @@ footer {
                 Offline-First Field Mapping
             </h3>
             <p style="font-size:15px; color:var(--text-2); max-width:520px; margin:0 auto;">
-                Drop POIs, log GPS tracks, draw coverage areas, and sync when you're back in range.
+                Capture point observations, create and edit lines, draw areas (polygons), log GPS tracks and sync when you're back in range.
                 Designed as a focused field tool that can complement an organization's existing GIS.
             </p>
         </div>
@@ -801,9 +803,15 @@ footer {
       </div>
 
       <div class="feature-card">
-          <div class="feature-icon">🟦</div>
-        <h3>Coverage Tracking</h3>
-        <p>Draw polygons to mark sectors — to-search, active, or searched. See at a glance where your team has and hasn't been.</p>
+        <div class="feature-icon">🟦</div>
+        <h3>Draw Areas (Polygons)</h3>
+        <p>Map boundaries, inspection zones and survey areas. In search and rescue, polygons can also mark sectors and coverage status.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">📏</div>
+        <h3>Create &amp; Edit Lines</h3>
+        <p>Manually draw and edit line features for roads, trails, drainage routes and other linear infrastructure. Separate from automatic GPS track logging.</p>
       </div>
 
       <div class="feature-card">
@@ -911,7 +919,7 @@ footer {
       <div class="step">
         <div class="step-n">03</div>
         <h3>Work offline</h3>
-        <p>Drop POIs, log tracks, draw coverage. Everything saves locally — no bars required.</p>
+        <p>Capture points, manually draw lines and areas, and log GPS tracks. Supported work saves locally for later sync.</p>
       </div>
       <div class="step">
         <div class="step-n">04</div>
