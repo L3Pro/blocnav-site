@@ -30,7 +30,7 @@ The site should build trust and open conversations, not claim full GIS replaceme
 | --- | --- | --- |
 | Hero | Retain established headline, add a short description of field observations and active-development status | Preserve recognition while clarifying product scope |
 | Audience | Add public works, utility/infrastructure fieldwork and GIS field teams alongside SAR | Support both exploratory outreach tracks |
-| Geometry | Rename the SAR-specific "Coverage Tracking" card to "Draw Areas (Polygons)", add "Create & Edit Lines", and distinguish manual line editing from GPS track logging | Describe points, lines, and polygons using terms useful to general field/GIS teams |
+| Geometry | Replace SAR-specific "Coverage Tracking" with a single "Lines & Polygons" card, covering manually created/edited line features and drawn polygon areas. Keep Field Observations (points) and GPS Track Logging as separate cards | Present points, manually edited lines, polygons and movement tracks clearly within the original eight-card grid |
 | Trust | Replace "Zero Data Loss", "no failed syncs", "works on any device", universal setup-time and other absolute guarantees | Avoid unsupported reliability and compatibility promises |
 | Safety | Qualify Driver Mode as passenger/safely-stopped use | Avoid endorsing distracted driving |
 | Competitive comparison | Replace unsourced Esri price/failure comparisons with a neutral "field need / BlocNav approach" table | Do not misstate other tools' capabilities or pricing |
@@ -39,7 +39,7 @@ The site should build trust and open conversations, not claim full GIS replaceme
 | About section | Do not add a founder bio or company-about block to the homepage | Keep the product and discovery CTA central; provide individual credentials through outreach and professional profiles |
 | Product imagery | Preserve screenshot/map assets; label annotations and sample sync status as illustrative | Avoid implying sample labels are measured live data |
 | Editor controls | Remove hidden "Tweaks" panel, its message listener and script; preserve its current default two-column feature grid in CSS | Remove production-irrelevant editing behavior without redesign |
-| Geometry grid layout | Keep a two-column feature grid and span the final card across the row when there are nine cards | Avoid an orphaned final half-row while preserving the existing layout |
+| Geometry grid layout | Preserve exactly eight feature cards in the original two-column desktop layout | Avoid feature-grid redesign or an extra ninth card |
 | SEO | Revise homepage meta description | Match current scope and avoid unsupported licensing comparison |
 
 ## 4. Deliberately not included
@@ -62,7 +62,7 @@ The site should build trust and open conversations, not claim full GIS replaceme
 - [ ] Diff is limited to `index.html` and this planning document.
 - [ ] `kelleysite` is verified as the actual GitHub Pages publication source in repository settings; do not assume the default `main` branch.
 - [ ] Original light design, logo, hero imagery, map image, responsive behavior and SAR demo remain intact.
-- [ ] Geometry copy distinguishes manual line creation/editing, drawn polygons/areas, point observations and automatically logged GPS tracks. Confirm the integrated feature's availability in the intended demo environment; avoid implying CloudProd deployment.
+- [ ] The original feature grid contains exactly eight cards, including one "Lines & Polygons" card, separate "Capture Field Observations" (points) and "GPS Track Logging" cards, and no odd-card spanning CSS. Confirm manual line editing's availability in the intended demo environment; do not imply unverified CloudProd deployment.
 - [ ] Reviewers approve wording without unsupported guarantees, broad competitor attacks or implied production eligibility.
 - [ ] A human verifies the screenshot annotation disclaimer and checks that no personal biography is included.
 - [ ] HTML/link/static checks pass; visual review at 320, 390, 768 and 1440 px; mobile navigation and keyboard accessibility checked.
