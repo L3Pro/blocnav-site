@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BlocNav — Offline-First Field Mapping That Actually Works</title>
-<meta name="description" content="BlocNav is an offline-first mapping platform for field teams. Drop POIs, track movement, draw coverage areas, and sync when connected. No Esri license required.">
+<meta name="description" content="BlocNav is an offline-first field mapping platform in development, designed for location-based observations and collaboration in challenging network conditions.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
 
@@ -301,7 +301,7 @@ p.lead { font-size: 17px; color: var(--text-2); line-height: 1.72; }
     }
 
 .feature-grid {
-  display: grid; grid-template-columns: repeat(4, 1fr);
+  display: grid; grid-template-columns: repeat(2, 1fr);
   gap: 1px; background: var(--border); border-radius: 14px; overflow: hidden;
   box-shadow: var(--shadow-sm);
 }
@@ -349,7 +349,7 @@ p.lead { font-size: 17px; color: var(--text-2); line-height: 1.72; }
   font-weight: 800; text-transform: uppercase; letter-spacing: 1px;
   display: flex; align-items: center; gap: 7px;
 }
-.col-head.them { background: var(--red-light); color: var(--red); border-right: 1px solid var(--border-md); }
+.col-head.them { background: var(--bg-alt); color: var(--text-2); border-right: 1px solid var(--border-md); }
 .col-head.us   { background: var(--brand-light); color: var(--brand); }
 
     .compare-row {
@@ -462,7 +462,7 @@ p.lead { font-size: 17px; color: var(--text-2); line-height: 1.72; }
 .cta .btn-primary:hover { background: var(--brand-hover); }
 .cta-note {
   display: block; margin-top: 16px;
-  font-family: var(--mono); font-size: 12px; color: rgba(255,255,255,0.3);
+  font-family: var(--mono); font-size: 12px; color: rgba(255,255,255,0.78);
 }
 
 /* ── FOOTER ── */
@@ -485,28 +485,7 @@ footer {
 .footer-links a:hover { color: var(--text); background: var(--bg); }
 .footer-copy { font-size: 13px; color: var(--text-3); }
 
-/* ── TWEAKS PANEL ── */
-#tweaks-panel {
-  display: none; position: fixed; bottom: 24px; right: 24px; z-index: 999;
-  background: var(--bg-white); border: 1px solid var(--border-md);
-  border-radius: 12px; padding: 20px; width: 240px;
-  box-shadow: 0 8px 32px rgba(15,22,35,0.15);
-}
-#tweaks-panel h4 {
-  font-family: var(--mono); font-size: 11px; text-transform: uppercase;
-  letter-spacing: 1.2px; color: var(--text-3); margin-bottom: 16px;
-}
-.tweak-row { margin-bottom: 14px; }
-.tweak-row label {
-  display: block; font-size: 12px; color: var(--text-2);
-  margin-bottom: 5px; font-weight: 600;
-}
-.tweak-row select, .tweak-row input[type=color] {
-  width: 100%; padding: 6px 10px; border-radius: 6px;
-  border: 1px solid var(--border-md); background: var(--bg);
-  font-family: var(--font); font-size: 13px; color: var(--text); cursor: pointer;
-}
-.tweak-row input[type=color] { height: 36px; padding: 2px 6px; }
+
 
     /* ── RESPONSIVE ── */
 
@@ -648,14 +627,14 @@ footer {
             }
 
                 .compare-cell.them::before {
-                    content: '✕  Traditional tools';
+                    content: 'Field workflow need';
                     position: absolute;
                     top: 8px;
                     left: 16px;
                     font-size: 14px;
                     font-family: var(--mono);
                     letter-spacing: 1px;
-                    color: var(--red);
+                    color: var(--text-2);
                     text-transform: uppercase;
                     font-weight: 500;
                 }
@@ -670,7 +649,7 @@ footer {
             }
 
                 .compare-cell.us::before {
-                    content: '✓  BlocNav';
+                    content: 'BlocNav approach';
                     position: absolute;
                     top: 8px;
                     left: 16px;
@@ -729,8 +708,9 @@ footer {
   <div class="hero-bg"></div>
   <div class="hero-content">
     <h1>Maps that work<br><em>when the internet&nbsp;<br>doesn't.</em></h1>
+    <p class="lead">Offline-first field mapping designed for practical location-based observations, photos and coordination in unreliable connectivity. BlocNav is in active development.</p>
     <div class="hero-ctas">
-      <a href="#contact" class="btn btn-primary">Get Access for Your Team</a>
+      <a href="#contact" class="btn btn-primary">Discuss Your Field Workflow</a>
       <a href="#features" class="btn btn-ghost">See What It Does →</a>
     </div>
   </div>
@@ -751,21 +731,21 @@ footer {
                 Offline-First Field Mapping
             </h3>
             <p style="font-size:15px; color:var(--text-2); max-width:520px; margin:0 auto;">
-                Drop POIs, log GPS tracks, draw coverage areas, and sync when you're back in range.
-                No enterprise license. No failed downloads. No lost data.
+                Capture point observations, create and edit lines, draw polygon areas, log GPS tracks and sync when you're back in range.
+                Designed as a focused field tool that can complement an organization's existing GIS.
             </p>
         </div>
 
         <!-- 3. Map -->
         <div class="showcase-map">
-            <img src="assets/blocnav-hero.png" alt="BlocNav offline field mapping — live screenshot" />
+            <img src="assets/blocnav-hero.png" alt="BlocNav field map with illustrative search-area, track and hazard annotations" />
             <div class="map-label label-complete">✓ Sector complete</div>
             <div class="map-label label-active">Active search sector</div>
             <div class="map-label label-track">Responder path</div>
             <div class="map-label label-hazard">⚠ Hazard reported</div>
             <div class="map-status-bar">
                 <span class="status-online"><span class="status-dot"></span>Offline mode · cached tiles</span>
-                <span class="status-sync">Last sync 4m ago</span>
+                <span class="status-sync">Example sync status</span>
             </div>
         </div>
 
@@ -775,8 +755,10 @@ footer {
             <div class="badge-group" style="justify-content:center;">
                 <span class="audience-tag">🔍 Search &amp; Rescue</span>
                 <span class="audience-tag">🌿 Environmental Survey</span>
-                <span class="audience-tag">⚡ Utility Inspection</span>
-                <span class="audience-tag">🚨 Disaster Response</span>
+                <span class="audience-tag">⚡ Utility &amp; Infrastructure Fieldwork</span>
+                <span class="audience-tag">🏙️ Public Works</span>
+                 <span class="audience-tag">🗺️ GIS Field Teams</span>
+                 <span class="audience-tag">🚨 Disaster Response</span>
                 <span class="audience-tag">🌾 Ranch &amp; Land Management</span>
             </div>
         </div>
@@ -785,11 +767,11 @@ footer {
         <div class="showcase-platform">
             <h3>Platform highlights</h3>
             <div class="badge-group" style="justify-content:center;">
-                <span class="badge badge--brand">PWA — Any Device</span>
-                <span class="badge badge--brand">Works on 2G</span>
+                <span class="badge badge--brand">Browser-based PWA</span>
+                <span class="badge badge--brand">Offline-first workflow</span>
                 <span class="badge badge--brand">GPS Track Logging</span>
-                <span class="badge badge--brand">Zero Data Loss</span>
-                <span class="badge badge--brand">Tested in Texas field ops</span>
+                <span class="badge badge--brand">Local data persistence</span>
+                <span class="badge badge--brand">Designed for field operations</span>
             </div>
         </div>
 
@@ -801,7 +783,7 @@ footer {
   <div class="container">
       <div class="section-head" style="margin-bottom:52px; text-align:center;">
           <span style="font-family:var(--font);font-size:34px;font-weight:700;color:var(--brand);display:block;line-height:1.15;margin-bottom:16px;">Features</span>
-          <h2 style="font-size:24px;font-weight:700;color:var(--text);letter-spacing:-0.4px;margin:0 auto;text-align:center;">Everything your team needs in the field. Nothing that breaks when you get there.</h2>
+          <h2 style="font-size:24px;font-weight:700;color:var(--text);letter-spacing:-0.4px;margin:0 auto;text-align:center;">Practical field mapping built for unreliable connectivity.</h2>
       </div>
 
     <div class="feature-grid">
@@ -809,49 +791,49 @@ footer {
       <div class="feature-card">
         <div class="feature-icon">🗺️</div>
         <h3>Offline Maps</h3>
-        <p>Download map tiles by county. They stay on your device — no random failures, no re-downloading every time you deploy.</p>
+        <p>Download supported county maps before heading out. Cached tiles can be used offline, subject to device storage and browser cache limits.</p>
       </div>
 
       <div class="feature-card">
         <div class="feature-icon">📍</div>
-        <h3>Drop POIs Anywhere</h3>
-        <p>Tap the map, add details and photos, save. Works with zero signal. Data survives app close, reboot, or dead battery.</p>
+        <h3>Capture Field Observations</h3>
+        <p>Add map-based observations, details and photos. Supported records are saved locally for synchronization when connectivity is available.</p>
       </div>
 
       <div class="feature-card">
-          <div class="feature-icon">🟦</div>
-        <h3>Coverage Tracking</h3>
-        <p>Draw polygons to mark sectors — to-search, active, or searched. See at a glance where your team has and hasn't been.</p>
+        <div class="feature-icon">📐</div>
+        <h3>Lines &amp; Polygons</h3>
+        <p>Manually create and edit lines for roads, trails and drainage features. Draw polygon areas for boundaries, inspection zones or search sectors.</p>
       </div>
 
       <div class="feature-card">
         <div class="feature-icon">🔄</div>
-        <h3>Conflict-Free Sync</h3>
-        <p>Back in range? Tap sync. POIs, tracks, and coverage merge cleanly — no failed syncs, no orphaned records.</p>
+        <h3>Offline Queue &amp; Sync</h3>
+        <p>Queue field changes locally and synchronize when connected. The design includes retries and explicit conflict handling.</p>
       </div>
 
       <div class="feature-card">
         <div class="feature-icon">🛤️</div>
         <h3>GPS Track Logging</h3>
-        <p>Record where your team actually went. Distance, duration, and route saved fully offline.</p>
+        <p>Record field routes, distance and duration while tracking is active. Background behavior depends on device and power settings.</p>
       </div>
 
       <div class="feature-card">
         <div class="feature-icon">🚗</div>
         <h3>Driver Mode</h3>
-        <p>One-tap hazard capture from a moving vehicle. Camera-first, GPS-tagged, auto-synced. No stopping, no forms.</p>
+        <p>Streamlined GPS-tagged photos and hazard observations for vehicle-based surveys. Use only as a passenger or while safely stopped.</p>
       </div>
 
       <div class="feature-card">
         <div class="feature-icon">📱</div>
-        <h3>No App Store. No IT.</h3>
-        <p>Send a link. Open it. Install from the browser. Your team is live in under 60 seconds on any device.</p>
+        <h3>Browser-Based Access</h3>
+        <p>Access the app in a supported browser and install it where supported. Team onboarding is coordinated during evaluation.</p>
       </div>
 
       <div class="feature-card">
         <div class="feature-icon">👥</div>
-        <h3>Team-Ready</h3>
-        <p>Everyone works from the same map. POIs, tracks, and coverage from your whole team merge after sync.</p>
+        <h3>Projects &amp; Contributor Sharing</h3>
+        <p>Create projects, invite contributors to collect field data, and manage access from one shared workspace. No per-contributor seat licenses required.</p>
       </div>
 
     </div>
@@ -863,26 +845,26 @@ footer {
   <div class="container">
       <div class="section-head" style="margin-bottom:40px;">
           <span style="font-family:var(--font);font-size:34px;font-weight:700;color:var(--brand);display:block;line-height:1.15;margin-bottom:16px;">The Difference</span>
-          <h2 style="font-size:24px;font-weight:700;color:var(--text);letter-spacing:-0.4px;margin-bottom:10px;">Field mapping shouldn't require an enterprise GIS license.</h2>
-          <p class="lead" style="margin-left:auto; margin-right:auto;">BlocNav is built for teams who've tried ArcGIS Field Maps — and need something that actually works offline.</p>
+          <h2 style="font-size:24px;font-weight:700;color:var(--text);letter-spacing:-0.4px;margin-bottom:10px;">Field data collection should be approachable for non-GIS staff.</h2>
+          <p class="lead" style="margin-left:auto; margin-right:auto;">BlocNav is being developed as a focused field-collection companion, not a full replacement for enterprise GIS or an organization's system of record.</p>
       </div>
 
       <div class="compare-table" style="margin:0 auto;">
           <div class="compare-head-row">
-              <div class="col-head them">✕ &nbsp;Traditional tools</div>
-              <div class="col-head us">✓ &nbsp;BlocNav</div>
+              <div class="col-head them">Field workflow need</div>
+              <div class="col-head us">BlocNav approach</div>
           </div>
           <div class="compare-row">
-              <div class="compare-cell them">Offline downloads fail randomly — even for small areas. Maps vanish from devices after days.</div>
-              <div class="compare-cell us"><strong>Download county tiles once.</strong> Integrity-verified. They stay until you clear them.</div>
+              <div class="compare-cell them">Field teams need map context even when the network connection is weak or unavailable.</div>
+              <div class="compare-cell us"><strong>Prepare supported county maps ahead of time.</strong> Cached tiles remain available within device storage limits.</div>
           </div>
           <div class="compare-row">
-              <div class="compare-cell them">Sync fails silently. Edits get trapped on device with no recovery path.</div>
-              <div class="compare-cell us"><strong>Atomic batch sync</strong> with conflict-free merge. POIs, tracks, and coverage all make it to the server.</div>
+              <div class="compare-cell them">Crews need a way to record observations during outages and send updates later.</div>
+              <div class="compare-cell us"><strong>Collect locally, synchronize later.</strong> Retry-aware syncing and explicit conflict handling are core design goals.</div>
           </div>
           <div class="compare-row">
-              <div class="compare-cell them">$1,500+/user/year. IT department required. Weeks to deploy.</div>
-              <div class="compare-cell us"><strong>Share a URL. Install the PWA.</strong> Deployed in minutes, not months.</div>
+              <div class="compare-cell them">Field staff may not need full GIS authoring tools for routine location-based observations.</div>
+              <div class="compare-cell us"><strong>Focused browser-based tools</strong> for points, photos and operational context, with controlled evaluation access.</div>
           </div>
       </div>
   </div>
@@ -896,12 +878,12 @@ footer {
           <span style="font-family:var(--font);font-size:34px;font-weight:700;color:var(--brand);display:block;line-height:1.15;margin-bottom:16px;">Why <span class="bloc-black">Bloc</span><span class="nav-blue">Nav<span class="bloc-black">?</span></span></span>
         <h2 style="font-size:24px;font-weight:700;color:var(--text);letter-spacing:-0.4px;margin-bottom:14px;">Slow networks are worse than no network.</h2>
         <p>Most apps treat connectivity as binary — online or offline. In the field, you're usually somewhere in between: your phone shows bars, but nothing loads.</p>
-        <p>BlocNav was designed for this "deceptive connectivity" problem. Local data is always available first, and the system never blocks your maps waiting on a network that isn't really there.</p>
+        <p>BlocNav was designed for this "deceptive connectivity" problem. Local data is always available first, and the application prioritizes locally available map context rather than relying solely on remote responses.</p>
         <p style="font-size:14px;"><a href="slow-networks.html">Read the full technical breakdown →</a></p>
       </div>
       <div class="why-callout">
         <p class="callout-quote">"The app shows signal, maps start to load, then everything freezes. Your team is standing there. Nothing works."</p>
-        <p style="font-size:14px; color: var(--text-2); line-height: 1.65;">This is the scenario BlocNav was built around. Every data operation is local-first — maps, POIs, tracks, and coverage all read from device storage before touching the network.</p>
+        <p style="font-size:14px; color: var(--text-2); line-height: 1.65;">This is the scenario BlocNav was built around. Supported map context and field records are designed for local access, with synchronization handled separately when connectivity allows.</p>
         <p class="callout-mono" style="margin-top: 16px;">local storage → network · never the reverse</p>
       </div>
     </div>
@@ -919,22 +901,22 @@ footer {
       <div class="step">
         <div class="step-n">01</div>
         <h3>Open the link</h3>
-        <p>Visit the URL on any phone, tablet, or laptop. Install the PWA from your browser in one tap — no app store.</p>
+        <p>Open the web app in a supported mobile or desktop browser. Install it where your device and browser support PWAs.</p>
       </div>
       <div class="step">
         <div class="step-n">02</div>
         <h3>Download your area</h3>
-        <p>Select counties. Tiles download and verify automatically. Stored locally until you delete them.</p>
+        <p>Select supported counties and download map tiles in advance. Cache availability depends on browser storage and device settings.</p>
       </div>
       <div class="step">
         <div class="step-n">03</div>
         <h3>Work offline</h3>
-        <p>Drop POIs, log tracks, draw coverage. Everything saves locally — no bars required.</p>
+        <p>Capture points, manually draw lines and areas, and log GPS tracks. Supported work saves locally for later sync.</p>
       </div>
       <div class="step">
         <div class="step-n">04</div>
         <h3>Sync when ready</h3>
-        <p>Back in range? One tap. Your team's data merges into a single shared map.</p>
+        <p>When connected, synchronize queued changes. Shared data access follows account and project permissions.</p>
       </div>
     </div>
   </div>
@@ -944,12 +926,10 @@ footer {
 <section class="cta" id="contact">
   <div class="cta-bg"></div>
   <div class="container">
-    <h2>Ready to test it in the field?</h2>
-    <p class="lead">BlocNav is in active pilot testing with field teams in Texas. If your team works in low-connectivity environments and needs mapping that actually works offline, let's talk.</p>
-    <a href="mailto:contact@blocnav.com" class="btn btn-primary">
-  contact@blocnav.com
-</a>
-    <span class="cta-note">Tell us your use case — we'll set up a walkthrough.</span>
+    <h2>Let's discuss your field workflow.</h2>
+     <p class="lead">BlocNav is in active development. We are speaking with public works, infrastructure, emergency response and GIS data-quality professionals to learn where current field workflows are underserved. Demonstrations are available by arrangement; operational pilots depend on readiness and appropriate data safeguards.</p>
+     <a href="mailto:contact@blocnav.com?subject=BlocNav%20Field%20Workflow%20Conversation" class="btn btn-primary">Discuss Your Field Workflow</a>
+     <span class="cta-note">Email contact@blocnav.com with a brief description of your team's workflow.</span>
   </div>
 </section>
 
@@ -964,69 +944,6 @@ footer {
   </div>
   <span class="footer-copy">© 2026 BlocNav</span>
 </footer>
-
-<!-- TWEAKS PANEL -->
-<div id="tweaks-panel">
-  <h4>Tweaks</h4>
-  <div class="tweak-row">
-    <label>Brand color</label>
-    <input type="color" id="tw-brand" value="#2358e8" oninput="applyBrand(this.value)">
-  </div>
-  <div class="tweak-row">
-    <label>Feature grid</label>
-    <select id="tw-grid" onchange="applyGrid(this.value)">
-      <option value="4">4 columns</option>
-      <option value="3">3 columns</option>
-      <option value="2">2 columns</option>
-    </select>
-  </div>
-  <div class="tweak-row">
-    <label>CTA background</label>
-    <select id="tw-cta" onchange="applyCTA(this.value)">
-      <option value="dark">Dark (default)</option>
-      <option value="brand">Brand blue</option>
-      <option value="light">Light</option>
-    </select>
-  </div>
-</div>
-
-<script>
-// Tweaks wiring
-window.addEventListener('message', e => {
-  if (e.data?.type === '__activate_edit_mode')   document.getElementById('tweaks-panel').style.display = 'block';
-  if (e.data?.type === '__deactivate_edit_mode') document.getElementById('tweaks-panel').style.display = 'none';
-});
-window.parent.postMessage({ type: '__edit_mode_available' }, '*');
-
-const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
-  "brand": "#2358e8",
-  "grid": "2",
-  "cta": "dark"
-}/*EDITMODE-END*/;
-
-function applyBrand(v) {
-  document.documentElement.style.setProperty('--brand', v);
-  // derive hover (slightly darker)
-  document.documentElement.style.setProperty('--brand-hover', v);
-  window.parent.postMessage({ type: '__edit_mode_set_keys', edits: { brand: v } }, '*');
-}
-function applyGrid(v) {
-  document.querySelector('.feature-grid').style.gridTemplateColumns = `repeat(${v},1fr)`;
-  window.parent.postMessage({ type: '__edit_mode_set_keys', edits: { grid: v } }, '*');
-}
-function applyCTA(v) {
-  const cta = document.querySelector('.cta');
-  if (v === 'dark')  { cta.style.background = 'var(--text)'; cta.querySelector('h2').style.color = '#fff'; cta.querySelector('.lead').style.color = 'rgba(255,255,255,0.55)'; }
-  if (v === 'brand') { cta.style.background = '#2358e8'; cta.querySelector('h2').style.color = '#fff'; cta.querySelector('.lead').style.color = 'rgba(255,255,255,0.65)'; }
-  if (v === 'light') { cta.style.background = 'var(--bg-white)'; cta.querySelector('h2').style.color = 'var(--text)'; cta.querySelector('.lead').style.color = 'var(--text-2)'; }
-  window.parent.postMessage({ type: '__edit_mode_set_keys', edits: { cta: v } }, '*');
-}
-
-// Apply defaults on load
-applyBrand(TWEAK_DEFAULTS.brand);
-applyGrid(TWEAK_DEFAULTS.grid);
-applyCTA(TWEAK_DEFAULTS.cta);
-</script>
 
 <script>
     function closeMenu() {
