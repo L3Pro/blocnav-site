@@ -34,7 +34,7 @@ The site should build trust and open conversations, not claim full GIS replaceme
 | Trust | Replace "Zero Data Loss", "no failed syncs", "works on any device", universal setup-time and other absolute guarantees | Avoid unsupported reliability and compatibility promises |
 | Safety | Qualify Driver Mode as passenger/safely-stopped use | Avoid endorsing distracted driving |
 | Competitive comparison | Replace unsourced Esri price/failure comparisons with a neutral "field need / BlocNav approach" table | Do not misstate other tools' capabilities or pricing |
-| Collaboration | Describe project sharing as being validated for pilot use | Avoid implying live multi-tenant production readiness |
+| Projects and sharing | Highlight user-created projects, contributor invitations, and no per-contributor seat licenses. Preserve actual access controls and avoid claiming infinite capacity or production pilot readiness | Explain a key collaboration advantage rather than internal development status |
 | Contact | Change primary CTA to "Discuss Your Field Workflow"; prefill an email subject; keep `contact@blocnav.com` visible | Make discussion the primary conversion |
 | About section | Do not add a founder bio or company-about block to the homepage | Keep the product and discovery CTA central; provide individual credentials through outreach and professional profiles |
 | Product imagery | Preserve screenshot/map assets; label annotations and sample sync status as illustrative | Avoid implying sample labels are measured live data |
@@ -62,6 +62,7 @@ The site should build trust and open conversations, not claim full GIS replaceme
 - [ ] Diff is limited to `index.html` and this planning document.
 - [ ] `kelleysite` is verified as the actual GitHub Pages publication source in repository settings; do not assume the default `main` branch.
 - [ ] Original light design, logo, hero imagery, map image, responsive behavior and SAR demo remain intact.
+- [ ] Confirm the Projects & Contributor Sharing card correctly describes project creation, invitations and the intended seat-free contributor licensing model before publication.
 - [ ] The original feature grid contains exactly eight cards, including one "Lines & Polygons" card, separate "Capture Field Observations" (points) and "GPS Track Logging" cards, and no odd-card spanning CSS. Confirm manual line editing's availability in the intended demo environment; do not imply unverified CloudProd deployment.
 - [ ] Reviewers approve wording without unsupported guarantees, broad competitor attacks or implied production eligibility.
 - [ ] A human verifies the screenshot annotation disclaimer and checks that no personal biography is included.
